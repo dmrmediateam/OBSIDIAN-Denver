@@ -87,6 +87,24 @@ export default function Moving() {
                     className="company-logo"
                   />
                 </div>
+                <div className="logo-item">
+                  <Image 
+                    src="/Niagara-logo-color@2x.png" 
+                    alt="Niagara" 
+                    width={150}
+                    height={80}
+                    className="company-logo"
+                  />
+                </div>
+                <div className="logo-item">
+                  <Image 
+                    src="/rbc_wealth_management_logo.jpeg" 
+                    alt="RBC Wealth Management" 
+                    width={150}
+                    height={80}
+                    className="company-logo"
+                  />
+                </div>
               </div>
             </div>
             
