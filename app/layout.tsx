@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: '--font-sans' });
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  variable: '--font-serif',
+  weight: ['400', '600', '700']
+});
 
 export const metadata: Metadata = {
   title: "Obsidian Denver",
@@ -16,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body>
         {/* Google tag (gtag.js) */}
         <Script
