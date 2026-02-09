@@ -71,35 +71,8 @@ export default function Moving() {
               <div className="logos-grid">
                 <div className="logo-item">
                   <Image 
-                    src="/DaVita_Inc_logo.png" 
-                    alt="DaVita" 
-                    width={150}
-                    height={80}
-                    className="company-logo"
-                  />
-                </div>
-                <div className="logo-item">
-                  <Image 
-                    src="/Dish_Network_2019.svg" 
-                    alt="Dish Network" 
-                    width={150}
-                    height={80}
-                    className="company-logo"
-                  />
-                </div>
-                <div className="logo-item">
-                  <Image 
                     src="/Google_2015_logo.svg.webp" 
                     alt="Google" 
-                    width={150}
-                    height={80}
-                    className="company-logo"
-                  />
-                </div>
-                <div className="logo-item">
-                  <Image 
-                    src="/Liberty_Media-Logo.wine.png" 
-                    alt="Liberty Media" 
                     width={150}
                     height={80}
                     className="company-logo"
