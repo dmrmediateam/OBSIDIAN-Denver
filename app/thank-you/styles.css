@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--spacing-3xl) var(--spacing-lg);
+  background: var(--color-off-white);
 }
 
 .thank-you-content {
@@ -16,8 +17,8 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: var(--color-yellow);
-  color: var(--color-off-black);
+  background: var(--color-near-black);
+  color: var(--color-off-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,6 +26,7 @@
   font-weight: bold;
   margin: 0 auto var(--spacing-xl);
   animation: scaleIn 0.5s ease-out;
+  font-family: var(--font-serif), serif;
 }
 
 @keyframes scaleIn {
@@ -42,42 +44,48 @@
 }
 
 .thank-you-heading {
-  font-size: var(--font-size-5xl);
+  font-family: var(--font-serif), serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
-  color: var(--color-off-white);
+  color: var(--color-near-black);
   margin-bottom: var(--spacing-lg);
   letter-spacing: -0.02em;
   animation: fadeInUp 0.6s ease-out 0.2s both;
+  line-height: 1.2;
 }
 
 .thank-you-message {
-  font-size: var(--font-size-xl);
-  color: rgba(250, 249, 246, 0.8);
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  color: rgba(26, 26, 26, 0.8);
   margin-bottom: var(--spacing-2xl);
-  line-height: 1.6;
+  line-height: 1.7;
   animation: fadeInUp 0.6s ease-out 0.4s both;
+  font-family: var(--font-sans);
 }
 
 .check-instructions {
-  background: rgba(250, 249, 246, 0.05);
-  border: 1px solid rgba(250, 249, 246, 0.1);
+  background: var(--color-off-white);
+  border: 1px solid var(--color-soft-gray);
   border-radius: var(--radius-xl);
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-3xl);
   animation: fadeInUp 0.6s ease-out 0.6s both;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .instruction-text {
   font-size: var(--font-size-lg);
-  color: var(--color-off-white);
+  color: var(--color-near-black);
   margin-bottom: var(--spacing-md);
   line-height: 1.7;
   font-weight: 500;
+  font-family: var(--font-sans);
 }
 
 .instruction-subtext {
   font-size: var(--font-size-base);
-  color: rgba(250, 249, 246, 0.7);
+  color: rgba(26, 26, 26, 0.7);
   line-height: 1.6;
+  font-family: var(--font-sans);
 }
 
 @keyframes fadeInUp {
@@ -99,7 +107,7 @@
   }
 
   .thank-you-heading {
-    font-size: var(--font-size-4xl);
+    font-size: clamp(2rem, 6vw, 2.5rem);
   }
 
   .thank-you-message {
@@ -108,5 +116,9 @@
 
   .instruction-text {
     font-size: var(--font-size-base);
+  }
+
+  .check-instructions {
+    padding: var(--spacing-xl);
   }
 }

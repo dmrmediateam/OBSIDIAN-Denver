@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { sendFormEmail } from '@/app/lib/sendgrid';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,6 +13,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    // Send email notification
+    await sendFormEmail('Find Your Local Realtor', body);
 
     // Send data to Zapier webhook
     const response = await fetch(zapierWebhookUrl, {
