@@ -268,39 +268,57 @@ export default function Home() {
           <div className="reviews-grid">
             <div className="review-card">
               <p className="review-quote">
-                "David and Dax are amazing! They are trustworthy and really know the industry inside and out. You are in great hands with Obsidian."
+                "We did a luxury transaction with David and his team. We were pleased with his professionalism & calmness throughout the transaction. We would totally recommend Obsidian Denver to anyone looking to buy or sell a home!"
               </p>
-              <p className="review-author">Misty Forde</p>
+              <p className="review-author">Dae Jung</p>
             </div>
             <div className="review-card">
               <p className="review-quote">
-                "David was there for everything I needed! Great business. 10/10 recommend."
+                "David was there for everything I needed! Great business 10/10 recommend"
               </p>
               <p className="review-author">Kyle Rupert</p>
             </div>
             <div className="review-card">
               <p className="review-quote">
-                "As a first-time homebuyer, I was nervous, but David made it feel manageable every step of the way. He worked relentlessly for my family."
+                "As a first-time homebuyer, I was nervous going into the process, but David made it feel manageable every step of the way. He worked relentlessly for my family, and the result was securing our first home."
               </p>
               <p className="review-author">Kyle Boten</p>
             </div>
             <div className="review-card">
               <p className="review-quote">
-                "We truly didn't think buying was possible for us, but David fought hard and worked tirelessly to make it happen."
-              </p>
-              <p className="review-author">Kelly Boten</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "Dax helped me find my home in Arvada. Knowledgeable, great negotiator, and very communicative."
+                "Dax helped me find my home in Arvada. He was very knowledgable, great negotiator and very communicative. As a first time home buyer, I am so glad I found Dax and I highly recommend him."
               </p>
               <p className="review-author">Daisy Galo</p>
             </div>
             <div className="review-card">
               <p className="review-quote">
-                "Looking to buy a home? LOOK NO FURTHER. Our move to Denver was seamless and thorough."
+                "David Heine is incredible! He helped us purchase our downtown Denver property and made the entire process seamless. His deep market knowledge, quick communication, and genuine care for our needs made us feel confident every step of the way."
               </p>
-              <p className="review-author">Juan Cuellar</p>
+              <p className="review-author">Chanell Cuellar</p>
+            </div>
+            <div className="review-card">
+              <p className="review-quote">
+                "David was amazing helping us find our forever home! We looked for months and saw countless homes and never felt pressured or like we were an inconvenience. He had all the answers and the rare time he didn't, he found out for us!"
+              </p>
+              <p className="review-author">Kelly Clendenin</p>
+            </div>
+            <div className="review-card">
+              <p className="review-quote">
+                "David has consistently gone above and beyond with the process of buying and selling our home. He was always quick to remediate any issues, always quick with responses to our questions and needs."
+              </p>
+              <p className="review-author">Rob Greenberg</p>
+            </div>
+            <div className="review-card">
+              <p className="review-quote">
+                "I just completed my first home purchase and couldn't have done it without David by my side. He worked with me to understand the market, home buying process, and put forth a plan."
+              </p>
+              <p className="review-author">Sarah Muha</p>
+            </div>
+            <div className="review-card">
+              <p className="review-quote">
+                "David was fantastic throughout my entire home buying experience. Knowledgeable, patient, and always available to answer my questions. David helped me find the perfect home and made the closing process a breeze."
+              </p>
+              <p className="review-author">Scott McCoy</p>
             </div>
           </div>
         </div>

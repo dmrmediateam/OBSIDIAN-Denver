@@ -26,7 +26,7 @@
 
 .hero-subheadline {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
   color: rgba(26, 26, 26, 0.7);
   line-height: 1.7;
   max-width: 800px;
@@ -43,10 +43,12 @@
 
 .logos-intro {
   font-size: var(--font-size-sm);
-  color: rgba(250, 249, 246, 0.7);
+  color: rgba(26, 26, 26, 0.7);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--spacing-lg);
+  font-family: var(--font-sans);
+  font-weight: 600;
 }
 
 .logos-grid {
@@ -66,7 +68,7 @@
 
 @media (min-width: 1024px) {
   .logos-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -99,6 +101,90 @@
 
 .logo-item:hover .company-logo {
   opacity: 1;
+}
+
+/* Pain Section (Fear) */
+.pain-section-moving {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  background: rgba(26, 26, 26, 0.02);
+}
+
+.pain-scenarios {
+  max-width: 900px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.pain-scenario {
+  background: var(--color-off-white);
+  border-left: 4px solid rgba(220, 38, 38, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  transition: all var(--transition-base);
+}
+
+.pain-scenario:hover {
+  border-left-color: rgba(220, 38, 38, 0.6);
+  transform: translateX(4px);
+}
+
+.scenario-text {
+  font-size: var(--font-size-lg);
+  color: rgba(26, 26, 26, 0.9);
+  line-height: 1.8;
+  font-family: var(--font-sans);
+  margin: 0;
+}
+
+.pain-relief-line {
+  font-family: var(--font-serif), serif;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-near-black);
+  text-align: center;
+  margin-top: var(--spacing-2xl);
+}
+
+/* Relief Section (The Turn) */
+.relief-section {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  background: var(--color-off-white);
+}
+
+.relief-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.relief-paragraph {
+  font-size: var(--font-size-lg);
+  color: rgba(26, 26, 26, 0.9);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-sans);
+}
+
+/* Form Section */
+.form-section-moving {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  background: var(--color-soft-gray);
+}
+
+.form-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-priming {
+  font-family: var(--font-serif), serif;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-near-black);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
 }
 
 /* Form at Top */
@@ -505,6 +591,128 @@
   font-family: var(--font-sans);
 }
 
+/* Family-Focused Testimonials */
+.testimonials-section-moving {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  background: var(--color-off-white);
+}
+
+.testimonials-grid-family {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .testimonials-grid-family {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.testimonial-card-emotional {
+  background: var(--color-off-white);
+  border: 1px solid var(--color-soft-gray);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  transition: all var(--transition-base);
+}
+
+.testimonial-card-emotional:hover {
+  border-color: var(--color-accent-bronze);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.testimonial-quote {
+  font-size: var(--font-size-lg);
+  color: rgba(26, 26, 26, 0.9);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+  font-style: italic;
+  font-family: var(--font-sans);
+}
+
+.testimonial-author {
+  font-size: var(--font-size-base);
+  color: var(--color-near-black);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  font-family: var(--font-sans);
+}
+
+.testimonial-context {
+  font-size: var(--font-size-sm);
+  color: rgba(26, 26, 26, 0.6);
+  font-family: var(--font-sans);
+}
+
+/* Family Benefits Section */
+.family-benefits-section {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  background: var(--color-soft-gray);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.benefit-item {
+  background: var(--color-off-white);
+  border: 1px solid var(--color-soft-gray);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.benefit-item:hover {
+  border-color: var(--color-accent-bronze);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  line-height: 1;
+}
+
+.benefit-title {
+  font-family: var(--font-serif), serif;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-near-black);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.3;
+}
+
+.benefit-description {
+  font-size: var(--font-size-base);
+  color: rgba(26, 26, 26, 0.7);
+  line-height: 1.6;
+  font-family: var(--font-sans);
+}
+
 /* Social Proof Section */
 .social-proof-section {
   padding-top: var(--spacing-3xl);
@@ -701,6 +909,16 @@
   font-style: italic;
   letter-spacing: 0.05em;
   font-family: var(--font-sans);
+  margin-top: var(--spacing-xl);
+}
+
+.final-cta-form-wrapper {
+  max-width: 700px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.form-content-compact {
+  padding: var(--spacing-2xl);
 }
 
 /* Animated Rating Badge */
