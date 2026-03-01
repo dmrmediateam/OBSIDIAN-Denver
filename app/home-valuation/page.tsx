@@ -49,7 +49,7 @@ export default function HomeValuation() {
       zip: zip,
       name: formData.get('name'),
       email: formData.get('email'),
-      phone: formData.get('phone') || '',
+      phone: formData.get('phone'),
     };
 
     try {
@@ -147,7 +147,7 @@ export default function HomeValuation() {
                     </div>
                     <div className="form-group">
                       <label htmlFor="phone" className="form-label">
-                        Phone (Optional)
+                        Phone Number *
                       </label>
                       <input
                         type="tel"
@@ -155,6 +155,7 @@ export default function HomeValuation() {
                         name="phone"
                         className="form-input"
                         placeholder="(303) 555-1234"
+                        required
                       />
                     </div>
                     <button
@@ -456,7 +457,7 @@ export default function HomeValuation() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="phone-final" className="form-label">
-                      Phone (Optional)
+                      Phone Number *
                     </label>
                     <input
                       type="tel"
@@ -464,6 +465,7 @@ export default function HomeValuation() {
                       name="phone"
                       className="form-input"
                       placeholder="(303) 555-1234"
+                      required
                     />
                   </div>
                   <button
