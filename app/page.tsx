@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import './globals.css';
 
 export default function Home() {
@@ -232,7 +233,7 @@ export default function Home() {
             <div className="team-member">
               <div className="team-image-wrapper">
                 <Image 
-                  src="/KWUE_3 (1).jpg" 
+                  src="/KWUE_3%20(1).webp" 
                   alt="David" 
                   width={320}
                   height={320}
@@ -246,7 +247,7 @@ export default function Home() {
             <div className="team-member">
               <div className="team-image-wrapper">
                 <Image 
-                  src="/JHP_0162_S (1).jpg" 
+                  src="/JHP_0162_S%20(1).webp" 
                   alt="Dax" 
                   width={320}
                   height={320}
@@ -359,7 +360,7 @@ export default function Home() {
             </div>
             <div className="company-logo-item">
               <Image 
-                src="/rbc_wealth_management_logo.jpeg" 
+                src="/rbc_wealth_management_logo.webp" 
                 alt="RBC Wealth Management" 
                 width={150}
                 height={80}
@@ -385,9 +386,9 @@ export default function Home() {
               </p>
             </div>
             <div className="footer-links">
-              <a href="/home-valuation" className="footer-link">Home Valuation</a>
-              <a href="/moving" className="footer-link">Moving to Denver</a>
-              <a href="/find-your-local-realtor" className="footer-link">Find Your Realtor</a>
+              <Link href="/home-valuation" className="footer-link">Home Valuation</Link>
+              <Link href="/moving" className="footer-link">Moving to Denver</Link>
+              <Link href="/find-your-local-realtor" className="footer-link">Find Your Realtor</Link>
             </div>
           </div>
           <div className="footer-bottom">

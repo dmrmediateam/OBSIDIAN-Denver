@@ -101,7 +101,7 @@ export default function Moving() {
                 </div>
                 <div className="logo-item">
                   <Image 
-                    src="/rbc_wealth_management_logo.jpeg" 
+                    src="/rbc_wealth_management_logo.webp" 
                     alt="RBC Wealth Management" 
                     width={150}
                     height={80}
@@ -359,7 +359,7 @@ export default function Moving() {
             <div className="team-member">
               <div className="team-image-wrapper">
                 <Image 
-                  src="/KWUE_3 (1).jpg" 
+                  src="/KWUE_3%20(1).webp" 
                   alt="David" 
                   width={320}
                   height={320}
@@ -376,7 +376,7 @@ export default function Moving() {
             <div className="team-member">
               <div className="team-image-wrapper">
                 <Image 
-                  src="/JHP_0162_S (1).jpg" 
+                  src="/JHP_0162_S%20(1).webp" 
                   alt="Dax" 
                   width={320}
                   height={320}
