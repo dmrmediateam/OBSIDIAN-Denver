@@ -1343,8 +1343,8 @@ export default function PropertyLandingClient() {
         .readMoreButton {
           display: block;
           width: 100%;
-          margin-top: 1rem;
-          padding: 1rem 0 0;
+          margin-top: 0.25rem;
+          padding: 0.55rem 0 0;
           border: 0;
           border-top: 1px solid var(--border);
           background: transparent;
