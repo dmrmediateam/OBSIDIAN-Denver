@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import SiteFooter from '../components/SiteFooter';
 import './styles.css';
 
 export default function FindYourLocalRealtor() {
@@ -506,6 +507,7 @@ export default function FindYourLocalRealtor() {
           <div className="rating-platforms">Zillow & Google</div>
         </div>
       </div>
+      <SiteFooter />
     </main>
   );
 }

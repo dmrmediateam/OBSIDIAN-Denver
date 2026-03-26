@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Script from 'next/script';
+import SiteFooter from '../components/SiteFooter';
 import './styles.css';
 
 export default function ThankYou() {
@@ -42,6 +43,7 @@ export default function ThankYou() {
           </div>
         </div>
       </div>
+      <SiteFooter />
     </main>
   );
 }

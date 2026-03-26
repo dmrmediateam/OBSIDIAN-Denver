@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Barlow, Barlow_Condensed, Cormorant_Garamond } from 'next/font/google';
+import SiteFooter from '../components/SiteFooter';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -347,6 +348,7 @@ export default function PropertyLandingClient() {
   const pageRef = useRef<HTMLDivElement | null>(null);
   const lightboxDialogRef = useRef<HTMLDivElement | null>(null);
   const heroSectionRef = useRef<HTMLElement | null>(null);
+  const galleryScrollerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const scope = pageRef.current;
@@ -460,6 +462,20 @@ export default function PropertyLandingClient() {
     setFormSent(true);
   };
 
+  const scrollGallery = (direction: 'left' | 'right') => {
+    const gallery = galleryScrollerRef.current;
+
+    if (!gallery) {
+      return;
+    }
+
+    const scrollAmount = Math.max(gallery.clientWidth * 0.8, 320);
+    gallery.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
   const activePhoto = lightboxIndex !== null ? allPhotos[lightboxIndex] : null;
   const activeCounter = lightboxIndex !== null ? lightboxIndex + 1 : 0;
 
@@ -567,7 +583,14 @@ export default function PropertyLandingClient() {
                 className={`photoCell ${isMain ? 'photoCellMain' : ''}`}
                 onClick={() => openLightbox(photoIndex)}
               >
-                <Image src={photo.src} alt={photo.alt} fill sizes={isMain ? '(max-width: 960px) 100vw, 50vw' : '(max-width: 960px) 50vw, 25vw'} className="cellImage" />
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes={isMain ? '(max-width: 960px) 100vw, 50vw' : '(max-width: 960px) 50vw, 25vw'}
+                  loading="eager"
+                  className="cellImage"
+                />
                 <span className="cellOverlay">
                   <span className="cellLabel">{label}</span>
                 </span>
@@ -640,18 +663,35 @@ export default function PropertyLandingClient() {
       <section id="gallery" className="gallerySection">
         <div className="container">
           <div className="galleryHeader reveal">
-            <p className="sectionLabel">Gallery</p>
-            <h2 className="sectionTitle singleLine">Interior & Exterior</h2>
+            <div>
+              <p className="sectionLabel">Gallery</p>
+              <h2 className="sectionTitle singleLine">Interior & Exterior</h2>
+            </div>
+            <div className="galleryControls" aria-label="Gallery navigation">
+              <button type="button" className="galleryArrow" onClick={() => scrollGallery('left')} aria-label="Scroll gallery left">
+                ‹
+              </button>
+              <button type="button" className="galleryArrow" onClick={() => scrollGallery('right')} aria-label="Scroll gallery right">
+                ›
+              </button>
+            </div>
           </div>
 
-          <div className="galleryScroller">
+          <div ref={galleryScrollerRef} className="galleryScroller">
             {galleryRowKeys.map((key) => {
               const { photo, index } = getPhoto(key);
 
               return (
                 <button key={photo.key} type="button" className="galleryThumb" onClick={() => openLightbox(index)}>
                   <span className="galleryThumbInner">
-                    <Image src={photo.src} alt={photo.alt} fill sizes="340px" className="galleryThumbImage" />
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="340px"
+                      loading="eager"
+                      className="galleryThumbImage"
+                    />
                     <span className="galleryThumbOverlay">
                       <span className="galleryThumbLabel">{photo.label}</span>
                     </span>
@@ -866,6 +906,8 @@ export default function PropertyLandingClient() {
         </div>
       ) : null}
 
+      <SiteFooter />
+
       <style jsx global>{`
         .propertyPage {
           --cream: #f8f7f4;
@@ -937,10 +979,10 @@ export default function PropertyLandingClient() {
 
         .navLinks {
           display: flex;
-          gap: 1.15rem;
+          gap: 1.3rem;
           font-family: var(--font-ui), sans-serif;
-          font-size: 0.74rem;
-          letter-spacing: 0.16em;
+          font-size: 0.84rem;
+          letter-spacing: 0.14em;
           text-transform: uppercase;
           color: rgba(248, 247, 244, 0.96);
           text-shadow: 0 3px 18px rgba(0, 0, 0, 0.4);
@@ -954,7 +996,7 @@ export default function PropertyLandingClient() {
           align-items: center;
           justify-content: center;
           min-height: 48px;
-          padding: 0 1.2rem;
+          padding: 0 1.35rem;
           border-radius: 999px;
           border: 1px solid transparent;
           cursor: pointer;
@@ -964,9 +1006,9 @@ export default function PropertyLandingClient() {
         .heroTopCta {
           color: rgba(248, 247, 244, 0.98) !important;
           font-family: var(--font-ui), sans-serif;
-          font-size: 0.74rem;
+          font-size: 0.84rem;
           font-weight: 500;
-          letter-spacing: 0.16em;
+          letter-spacing: 0.14em;
           text-transform: uppercase;
           text-shadow: 0 3px 18px rgba(0, 0, 0, 0.4);
         }
@@ -1343,7 +1385,7 @@ export default function PropertyLandingClient() {
         .readMoreButton {
           display: block;
           width: 100%;
-          margin-top: 0.25rem;
+          margin-top: -0.35rem;
           padding: 0.55rem 0 0;
           border: 0;
           border-top: 1px solid var(--border);
@@ -1415,7 +1457,39 @@ export default function PropertyLandingClient() {
         }
 
         .galleryHeader {
+          display: flex;
+          align-items: end;
+          justify-content: space-between;
+          gap: 1rem;
           margin-bottom: 1.5rem;
+        }
+
+        .galleryControls {
+          display: flex;
+          align-items: center;
+          gap: 0.65rem;
+        }
+
+        .galleryArrow {
+          width: 46px;
+          height: 46px;
+          border: 1px solid rgba(26, 26, 26, 0.14);
+          border-radius: 999px;
+          background: rgba(248, 247, 244, 0.9);
+          color: var(--ink);
+          font-size: 1.6rem;
+          line-height: 1;
+          cursor: pointer;
+          transition:
+            transform 180ms ease,
+            background 180ms ease,
+            border-color 180ms ease;
+        }
+
+        .galleryArrow:hover {
+          transform: translateY(-1px);
+          background: #f8f7f4;
+          border-color: rgba(26, 26, 26, 0.28);
         }
 
         .galleryScroller {
@@ -1915,6 +1989,10 @@ export default function PropertyLandingClient() {
             padding: 3.5rem 0;
           }
 
+          .galleryHeader {
+            align-items: center;
+          }
+
           .detailsGrid,
           .loftFeatureSection,
           .inquirySection,
@@ -2028,6 +2106,21 @@ export default function PropertyLandingClient() {
           .galleryThumbInner {
             width: 82vw;
             height: 58vw;
+          }
+
+          .galleryHeader {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .galleryControls {
+            gap: 0.55rem;
+          }
+
+          .galleryArrow {
+            width: 42px;
+            height: 42px;
+            font-size: 1.45rem;
           }
 
           .photoStripCtaWrap {

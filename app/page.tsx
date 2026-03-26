@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import SiteFooter from './components/SiteFooter';
 import './globals.css';
 
 export default function Home() {
@@ -371,33 +372,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="home-footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-info">
-              <h3 className="footer-brand">Obsidian Denver</h3>
-              <p className="footer-address">
-                4045 N Pecos St #201<br />
-                Denver, CO 80211, United States
-              </p>
-              <p className="footer-phone">
-                <a href="tel:+17207066768">+1 720-706-6768</a>
-              </p>
-            </div>
-            <div className="footer-links">
-              <Link href="/home-valuation" className="footer-link">Home Valuation</Link>
-              <Link href="/moving" className="footer-link">Moving to Denver</Link>
-              <Link href="/find-your-local-realtor" className="footer-link">Find Your Realtor</Link>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p className="footer-copyright">
-              © {new Date().getFullYear()} Obsidian Denver. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
