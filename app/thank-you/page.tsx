@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import Script from 'next/script';
-import SiteFooter from '../components/SiteFooter';
 import './styles.css';
 
 export default function ThankYou() {
@@ -41,9 +41,13 @@ export default function ThankYou() {
               We'll be in touch soon.
             </p>
           </div>
+          <nav className="thank-you-nav" aria-label="Back to site">
+            <Link href="/" className="thank-you-back-link">
+              Back to Obsidian Denver
+            </Link>
+          </nav>
         </div>
       </div>
-      <SiteFooter />
     </main>
   );
 }
