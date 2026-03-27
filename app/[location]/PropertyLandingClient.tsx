@@ -124,6 +124,8 @@ type ListingData = {
   neighborhoodCards: NeighborhoodCard[];
 };
 
+type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
+
 const allPhotos: Photo[] = [
   {
     key: 'hero',
@@ -333,7 +335,9 @@ function getPhoto(key: PhotoKey) {
 
 export default function PropertyLandingClient() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [formSent, setFormSent] = useState(false);
+  const [quickInfoOpen, setQuickInfoOpen] = useState(false);
+  const [quickLeadStatus, setQuickLeadStatus] = useState<SubmissionStatus>('idle');
+  const [inquiryStatus, setInquiryStatus] = useState<SubmissionStatus>('idle');
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [isPropertyExpanded, setIsPropertyExpanded] = useState(false);
   const [utmParams, setUtmParams] = useState<UtmParams>({
@@ -433,8 +437,38 @@ export default function PropertyLandingClient() {
     };
   }, [lightboxIndex]);
 
+  useEffect(() => {
+    if (!quickInfoOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setQuickInfoOpen(false);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [quickInfoOpen]);
+
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
+  };
+
+  const openQuickInfo = () => {
+    setQuickLeadStatus('idle');
+    setQuickInfoOpen(true);
+  };
+
+  const closeQuickInfo = () => {
+    setQuickInfoOpen(false);
   };
 
   const handlePrev = () => {
@@ -458,8 +492,46 @@ export default function PropertyLandingClient() {
   };
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setFormSent(true);
+    void submitLeadForm(event.currentTarget, 'private_showing');
+  };
+
+  const submitLeadForm = async (form: HTMLFormElement, leadType: 'quick_info' | 'private_showing') => {
+    const setStatus = leadType === 'quick_info' ? setQuickLeadStatus : setInquiryStatus;
+
+    setStatus('submitting');
+
+    const formData = new FormData(form);
+    const payload = {
+      ...Object.fromEntries(formData.entries()),
+      leadType,
+      listingAddress: listing.address,
+      listingSlug: listing.slug,
+      listingPrice: listing.price,
+      pagePath: window.location.pathname,
+    };
+
+    try {
+      const response = await fetch('/api/submit-property', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit property inquiry');
+      }
+
+      setStatus('success');
+
+      if (leadType === 'quick_info') {
+        form.reset();
+      }
+    } catch (error) {
+      console.error('Error submitting property inquiry:', error);
+      setStatus('error');
+    }
   };
 
   const scrollGallery = (direction: 'left' | 'right') => {
@@ -550,8 +622,14 @@ export default function PropertyLandingClient() {
             <button type="button" className="buttonPrimary" onClick={() => document.getElementById('inquire')?.scrollIntoView({ behavior: 'smooth' })}>
               Schedule a Showing
             </button>
-            <button type="button" className="buttonGhost" onClick={() => openLightbox(0)}>
-              View All Photos
+            <button
+              type="button"
+              className="buttonGhost"
+              aria-expanded={quickInfoOpen}
+              aria-controls="quick-info-form"
+              onClick={openQuickInfo}
+            >
+              Get More Info
             </button>
           </div>
         </div>
@@ -598,8 +676,8 @@ export default function PropertyLandingClient() {
             );
           })}
           <div className="photoStripCtaWrap">
-            <button type="button" className="photoStripCta" onClick={() => openLightbox(0)}>
-              View All Photos
+            <button type="button" className="photoStripCta" onClick={openQuickInfo}>
+              Get More Info
             </button>
           </div>
         </div>
@@ -818,7 +896,7 @@ export default function PropertyLandingClient() {
           <h2 className="formTitle">Request a Private Showing</h2>
           <p className="formSub">We&apos;ll be in touch within 2 hours</p>
 
-          {formSent ? (
+          {inquiryStatus === 'success' ? (
             <div className="successState">
               <p className="successTitle">Request received.</p>
               <p className="bodyText">An Obsidian Denver team member will follow up shortly to coordinate your showing.</p>
@@ -832,6 +910,8 @@ export default function PropertyLandingClient() {
               <input type="hidden" name="utm_content" value={utmParams.utm_content} />
               <input type="hidden" name="gclid" value={utmParams.gclid} />
               <input type="hidden" name="fbclid" value={utmParams.fbclid} />
+              <input type="hidden" name="listingAddress" value={listing.address} />
+              <input type="hidden" name="listingPrice" value={listing.price} />
               <div className="fieldGrid">
                 <label className="field">
                   <span>First Name</span>
@@ -864,9 +944,12 @@ export default function PropertyLandingClient() {
                 </label>
               </div>
 
-              <button type="submit" className="submitButton">
-                Submit Request
+              <button type="submit" className="submitButton" disabled={inquiryStatus === 'submitting'}>
+                {inquiryStatus === 'submitting' ? 'Submitting...' : 'Submit Request'}
               </button>
+              {inquiryStatus === 'error' ? (
+                <p className="formError">There was an issue sending your request. Please try again.</p>
+              ) : null}
               <p className="privacyNote">By submitting, you agree to be contacted by Obsidian Denver regarding this listing. Your information is never sold.</p>
             </form>
           )}
@@ -902,6 +985,68 @@ export default function PropertyLandingClient() {
             <button type="button" className="lightboxNext" onClick={handleNext} aria-label="Next image">
               ›
             </button>
+          </div>
+        </div>
+      ) : null}
+
+      {quickInfoOpen ? (
+        <div className="quickLeadOverlay" onClick={closeQuickInfo} role="dialog" aria-modal="true" aria-label="Get more info form">
+          <div id="quick-info-form" className="quickLeadModal" onClick={(event) => event.stopPropagation()}>
+            <button type="button" className="quickLeadClose" onClick={closeQuickInfo}>
+              Close
+            </button>
+            {quickLeadStatus === 'success' ? (
+              <div className="quickLeadSuccess">
+                <p className="quickLeadTitle">Info request received.</p>
+                <p className="quickLeadCopy">We&apos;ll follow up shortly with property details and next steps.</p>
+              </div>
+            ) : (
+              <>
+                <div className="quickLeadHeader">
+                  <p className="quickLeadEyebrow">Quick Lead Capture</p>
+                  <h2 className="quickLeadTitle">Get pricing details, disclosures, and showing info.</h2>
+                  <p className="quickLeadCopy">Leave your name and best email. Add a phone number if you want a faster callback.</p>
+                </div>
+
+                <form
+                  className="quickLeadForm"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    void submitLeadForm(event.currentTarget, 'quick_info');
+                  }}
+                >
+                  <input type="hidden" name="utm_source" value={utmParams.utm_source} />
+                  <input type="hidden" name="utm_medium" value={utmParams.utm_medium} />
+                  <input type="hidden" name="utm_campaign" value={utmParams.utm_campaign} />
+                  <input type="hidden" name="utm_term" value={utmParams.utm_term} />
+                  <input type="hidden" name="utm_content" value={utmParams.utm_content} />
+                  <input type="hidden" name="gclid" value={utmParams.gclid} />
+                  <input type="hidden" name="fbclid" value={utmParams.fbclid} />
+                  <div className="quickLeadGrid">
+                    <label className="quickLeadField">
+                      <span>Name</span>
+                      <input type="text" name="name" placeholder="Your name" required />
+                    </label>
+                    <label className="quickLeadField">
+                      <span>Email</span>
+                      <input type="email" name="email" placeholder="you@example.com" required />
+                    </label>
+                    <label className="quickLeadField quickLeadFieldWide">
+                      <span>Phone</span>
+                      <input type="tel" name="phone" placeholder="Optional for a faster callback" />
+                    </label>
+                  </div>
+
+                  <button type="submit" className="quickLeadButton" disabled={quickLeadStatus === 'submitting'}>
+                    {quickLeadStatus === 'submitting' ? 'Sending...' : 'Send Me the Details'}
+                  </button>
+                  {quickLeadStatus === 'error' ? (
+                    <p className="quickLeadError">There was an issue sending your request. Please try again.</p>
+                  ) : null}
+                  <p className="quickLeadNote">Your information stays private and is only used to respond about this listing.</p>
+                </form>
+              </>
+            )}
           </div>
         </div>
       ) : null}
@@ -1138,6 +1283,141 @@ export default function PropertyLandingClient() {
           flex-wrap: wrap;
           gap: 1rem;
           margin-top: 2rem;
+        }
+
+        .quickLeadOverlay {
+          position: fixed;
+          inset: 0;
+          z-index: 110;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1.5rem;
+          background: rgba(10, 10, 10, 0.76);
+          backdrop-filter: blur(6px);
+        }
+
+        .quickLeadModal {
+          position: relative;
+          width: min(580px, 100%);
+          max-height: min(90vh, 760px);
+          overflow: auto;
+          padding: 1.35rem;
+          border: 1px solid rgba(248, 247, 244, 0.18);
+          background: rgba(15, 15, 15, 0.38);
+          backdrop-filter: blur(14px);
+        }
+
+        .quickLeadClose {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          min-height: 38px;
+          padding: 0 0.9rem;
+          border: 1px solid rgba(248, 247, 244, 0.18);
+          border-radius: 999px;
+          background: rgba(248, 247, 244, 0.08);
+          color: var(--cream);
+          font-family: var(--font-ui), sans-serif;
+          font-size: 0.68rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+
+        .quickLeadHeader {
+          max-width: 42rem;
+          padding-right: 4.5rem;
+        }
+
+        .quickLeadEyebrow,
+        .quickLeadField span {
+          margin: 0;
+          color: rgba(248, 247, 244, 0.74);
+          font-family: var(--font-ui), sans-serif;
+          font-size: 0.68rem;
+          font-weight: 500;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+        }
+
+        .quickLeadTitle {
+          margin: 0.6rem 0 0;
+          color: var(--cream);
+          font-family: var(--font-display), serif;
+          font-size: clamp(1.8rem, 3vw, 2.4rem);
+          font-weight: 300;
+          line-height: 1;
+        }
+
+        .quickLeadCopy,
+        .quickLeadNote,
+        .quickLeadError {
+          margin: 0.75rem 0 0;
+          color: rgba(248, 247, 244, 0.78);
+          font-size: 0.96rem;
+          line-height: 1.7;
+        }
+
+        .quickLeadForm {
+          margin-top: 1.1rem;
+        }
+
+        .quickLeadGrid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.9rem;
+        }
+
+        .quickLeadField {
+          display: grid;
+          gap: 0.5rem;
+        }
+
+        .quickLeadFieldWide {
+          grid-column: 1 / -1;
+        }
+
+        .quickLeadField input {
+          width: 100%;
+          min-height: 48px;
+          padding: 0.9rem 1rem;
+          border: 1px solid rgba(248, 247, 244, 0.16);
+          background: rgba(248, 247, 244, 0.08);
+          color: var(--cream);
+          outline: none;
+        }
+
+        .quickLeadField input::placeholder {
+          color: rgba(248, 247, 244, 0.42);
+        }
+
+        .quickLeadButton {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 48px;
+          margin-top: 0.95rem;
+          padding: 0 1.35rem;
+          border: 0;
+          border-radius: 999px;
+          background: var(--cream);
+          color: var(--ink);
+          font-family: var(--font-ui), sans-serif;
+          font-size: 0.72rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
+
+        .quickLeadButton:disabled,
+        .submitButton:disabled {
+          cursor: wait;
+          opacity: 0.8;
+        }
+
+        .quickLeadSuccess {
+          max-width: 32rem;
         }
 
         .buttonPrimary {
@@ -1718,6 +1998,13 @@ export default function PropertyLandingClient() {
           color: rgba(248, 247, 244, 0.62);
         }
 
+        .formError {
+          margin: 0.85rem 0 0;
+          color: #f1c6c6;
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
         .formTitle {
           color: var(--cream);
           font-size: 3.2rem;
@@ -1958,6 +2245,10 @@ export default function PropertyLandingClient() {
             min-width: 0;
           }
 
+          .quickLeadModal {
+            width: 100%;
+          }
+
           .photoStripGrid {
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 280px 160px 160px;
@@ -2031,6 +2322,14 @@ export default function PropertyLandingClient() {
             grid-column: auto;
           }
 
+          .quickLeadGrid {
+            grid-template-columns: 1fr;
+          }
+
+          .quickLeadFieldWide {
+            grid-column: auto;
+          }
+
           .lightboxOverlay {
             padding: 1rem;
           }
@@ -2097,6 +2396,15 @@ export default function PropertyLandingClient() {
           .buttonPrimary,
           .buttonGhost {
             width: 100%;
+          }
+
+          .quickLeadModal {
+            padding: 1.15rem;
+          }
+
+          .quickLeadClose {
+            top: 0.85rem;
+            right: 0.85rem;
           }
 
           .galleryThumb {
