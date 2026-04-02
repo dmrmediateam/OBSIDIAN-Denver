@@ -63,6 +63,8 @@ export default function HomeValuation() {
       });
 
       if (response.ok) {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: 'lead_form_submit' });
         router.push('/thank-you');
       } else {
         setSubmitStatus('error');
