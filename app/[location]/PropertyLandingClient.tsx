@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Barlow, Barlow_Condensed, Cormorant_Garamond } from 'next/font/google';
 import SiteFooter from '../components/SiteFooter';
 
@@ -45,6 +46,9 @@ const photoPaths = {
   david: '/KWUE_3%20(1).webp',
   daxon: '/JHP_0162_S%20(1).webp',
 } as const;
+
+const EMAIL_PATTERN = '[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}';
+const PHONE_PATTERN = '(?:\\+?1[-.\\s]?)?(?:\\(\\d{3}\\)|\\d{3})[-.\\s]?\\d{3}[-.\\s]?\\d{4}';
 
 type PhotoKey = keyof typeof photoPaths;
 
@@ -334,6 +338,7 @@ function getPhoto(key: PhotoKey) {
 }
 
 export default function PropertyLandingClient() {
+  const router = useRouter();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [quickInfoOpen, setQuickInfoOpen] = useState(false);
   const [quickLeadStatus, setQuickLeadStatus] = useState<SubmissionStatus>('idle');
@@ -492,6 +497,7 @@ export default function PropertyLandingClient() {
   };
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     void submitLeadForm(event.currentTarget, 'private_showing');
   };
 
@@ -524,6 +530,7 @@ export default function PropertyLandingClient() {
       }
 
       setStatus('success');
+      router.push('/thank-you');
 
       if (leadType === 'quick_info') {
         form.reset();
@@ -846,7 +853,13 @@ export default function PropertyLandingClient() {
           <div className="agentGrid">
             <article className="agentMiniCard">
               <div className="agentPortrait">
-                <Image src={photoPaths.david} alt="David Heine of Obsidian Denver." fill sizes="80px" className="portraitImage" />
+                <Image
+                  src={photoPaths.david}
+                  alt="David Heine of Obsidian Denver."
+                  width={80}
+                  height={100}
+                  className="portraitImage"
+                />
               </div>
               <p className="agentRole">Co-Founder & Listing Agent · Obsidian Denver</p>
               <h2 className="agentName">David Heine</h2>
@@ -866,7 +879,13 @@ export default function PropertyLandingClient() {
 
             <article className="agentMiniCard">
               <div className="agentPortrait">
-                <Image src={photoPaths.daxon} alt="Daxon McInnis of Obsidian Denver." fill sizes="80px" className="portraitImage" />
+                <Image
+                  src={photoPaths.daxon}
+                  alt="Daxon McInnis of Obsidian Denver."
+                  width={80}
+                  height={100}
+                  className="portraitImage"
+                />
               </div>
               <p className="agentRole">Co-Founder & Listing Agent · Obsidian Denver</p>
               <h2 className="agentName">Daxon McInnis</h2>
@@ -923,11 +942,11 @@ export default function PropertyLandingClient() {
                 </label>
                 <label className="field fieldFull">
                   <span>Email</span>
-                  <input type="email" name="email" required />
+                  <input type="email" name="email" autoComplete="email" inputMode="email" pattern={EMAIL_PATTERN} title="Enter a valid email address." required />
                 </label>
                 <label className="field">
                   <span>Phone</span>
-                  <input type="tel" name="phone" required />
+                  <input type="tel" name="phone" autoComplete="tel" inputMode="tel" pattern={PHONE_PATTERN} title="Enter a valid 10-digit phone number." required />
                 </label>
                 <label className="field">
                   <span>Preferred Date</span>
@@ -1005,7 +1024,7 @@ export default function PropertyLandingClient() {
                 <div className="quickLeadHeader">
                   <p className="quickLeadEyebrow">Quick Lead Capture</p>
                   <h2 className="quickLeadTitle">Get pricing details, disclosures, and showing info.</h2>
-                  <p className="quickLeadCopy">Leave your name and best email. Add a phone number if you want a faster callback.</p>
+                  <p className="quickLeadCopy">Leave your name, best email, and phone number so we can follow up about this listing.</p>
                 </div>
 
                 <form
@@ -1029,11 +1048,11 @@ export default function PropertyLandingClient() {
                     </label>
                     <label className="quickLeadField">
                       <span>Email</span>
-                      <input type="email" name="email" placeholder="you@example.com" required />
+                      <input type="email" name="email" placeholder="you@example.com" autoComplete="email" inputMode="email" pattern={EMAIL_PATTERN} title="Enter a valid email address." required />
                     </label>
                     <label className="quickLeadField quickLeadFieldWide">
                       <span>Phone</span>
-                      <input type="tel" name="phone" placeholder="Optional for a faster callback" />
+                      <input type="tel" name="phone" placeholder="(555) 123-4567" autoComplete="tel" inputMode="tel" pattern={PHONE_PATTERN} title="Enter a valid 10-digit phone number." required />
                     </label>
                   </div>
 
@@ -1942,6 +1961,8 @@ export default function PropertyLandingClient() {
         }
 
         .portraitImage {
+          width: 100%;
+          height: 100%;
           object-fit: cover;
         }
 
