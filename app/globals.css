@@ -620,7 +620,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .home-form-team-section {
-  padding: var(--spacing-3xl) 0;
+  padding: 0;
   background: var(--color-off-white);
 }
 
@@ -641,7 +641,7 @@ input:focus, textarea:focus, select:focus {
 
 /* Form Column */
 .form-column {
-  background: var(--color-off-black);
+  background: var(--color-near-black);
   border: none;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0;
@@ -735,9 +735,9 @@ input:focus, textarea:focus, select:focus {
 }
 
 .team-column-tagline {
-  font-size: var(--font-size-sm);
-  color: rgba(26, 26, 26, 0.5);
-  letter-spacing: 0.08em;
+  font-size: var(--font-size-base);
+  color: rgba(26, 26, 26, 0.6);
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-top: var(--spacing-2xl);
   line-height: 1.8;
@@ -806,11 +806,16 @@ input:focus, textarea:focus, select:focus {
   text-align: center;
 }
 
+.team-image-link {
+  display: block;
+  text-decoration: none;
+}
+
 .team-image-wrapper {
   width: 200px;
   height: 200px;
   margin: 0 auto var(--spacing-md);
-  border-radius: 50%;
+  border-radius: 0;
   overflow: hidden;
   border: 2px solid var(--color-soft-gray);
   position: relative;
@@ -835,7 +840,7 @@ input:focus, textarea:focus, select:focus {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 50%;
+  border-radius: 0;
 }
 
 .team-name {
@@ -857,7 +862,7 @@ input:focus, textarea:focus, select:focus {
 
 /* Reviews Section */
 .home-reviews-section {
-  padding: 0 0 var(--spacing-3xl);
+  padding: 0;
   background: var(--color-soft-gray);
 }
 
@@ -933,6 +938,7 @@ input:focus, textarea:focus, select:focus {
   max-width: 1000px;
   margin: 0 auto;
   align-items: center;
+  justify-items: center;
 }
 
 @media (min-width: 768px) {
@@ -969,12 +975,11 @@ input:focus, textarea:focus, select:focus {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.6);
   transition: filter var(--transition-base);
 }
 
 .company-logo-item:hover .company-logo {
-  filter: grayscale(0%) opacity(1);
+  filter: none;
 }
 
 @media (max-width: 767px) {

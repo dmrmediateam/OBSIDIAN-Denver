@@ -288,30 +288,34 @@ export default function Home() {
               <h2 className="team-column-heading">Meet Your Team</h2>
               <div className="team-column-members">
                 <div className="team-member">
-                  <div className="team-image-wrapper">
-                    <Image 
-                      src="/KWUE_3%20(1).webp" 
-                      alt="David — Co-Founder of Obsidian Denver" 
-                      width={320}
-                      height={320}
-                      className="team-image"
-                      priority
-                    />
-                  </div>
+                  <a href="#reviews" className="team-image-link">
+                    <div className="team-image-wrapper">
+                      <Image 
+                        src="/KWUE_3%20(1).webp" 
+                        alt="David — Co-Founder of Obsidian Denver" 
+                        width={320}
+                        height={320}
+                        className="team-image"
+                        priority
+                      />
+                    </div>
+                  </a>
                   <h3 className="team-name">David</h3>
                   <p className="team-title">Co-Founder & Real Estate Expert</p>
                 </div>
                 <div className="team-member">
-                  <div className="team-image-wrapper">
-                    <Image 
-                      src="/JHP_0162_S%20(1).webp" 
-                      alt="Dax — Co-Founder of Obsidian Denver" 
-                      width={320}
-                      height={320}
-                      className="team-image"
-                      priority
-                    />
-                  </div>
+                  <a href="#reviews" className="team-image-link">
+                    <div className="team-image-wrapper">
+                      <Image 
+                        src="/JHP_0162_S%20(1).webp" 
+                        alt="Dax — Co-Founder of Obsidian Denver" 
+                        width={320}
+                        height={320}
+                        className="team-image"
+                        priority
+                      />
+                    </div>
+                  </a>
                   <h3 className="team-name">Dax</h3>
                   <p className="team-title">Co-Founder & Real Estate Expert</p>
                 </div>
@@ -325,7 +329,7 @@ export default function Home() {
       </section>
 
       {/* Reviews Section — Elfsight All-in-One Reviews | Dax+David + Obsidian */}
-      <section className="home-reviews-section">
+      <section id="reviews" className="home-reviews-section">
         <div className="container">
           <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
           <div className="elfsight-app-6a8fddef-b305-41ad-b4b2-85906d6fbbe2" data-elfsight-app-lazy></div>
