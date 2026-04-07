@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Script from 'next/script';
 import SiteFooter from '../components/SiteFooter';
 import './styles.css';
 
@@ -184,120 +185,154 @@ export default function HomeValuation() {
         </div>
       </section>
 
-      {/* Contrast Section */}
-      <section className="contrast-section section">
+      {/* Reviews — Elfsight Widget */}
+      <section className="testimonials-section section">
         <div className="container">
-          <div className="contrast-grid">
-            <div className="contrast-column contrast-column-negative">
-              <div className="contrast-header">
-                <div className="contrast-icon contrast-icon-robot">🤖</div>
-                <h3 className="contrast-title">The Algorithm Estimate</h3>
+          <h2 className="section-heading">Real Valuations, Real Results</h2>
+          <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+          <div className="elfsight-app-6a8fddef-b305-41ad-b4b2-85906d6fbbe2" data-elfsight-app-lazy></div>
+        </div>
+      </section>
+
+      {/* Denver Market Context Section */}
+      <section className="market-context-section section">
+        <div className="container">
+          <h2 className="section-heading">How We Calculate Your Denver Home Value</h2>
+          <div className="market-context-content">
+            <p className="market-context-text">
+              Denver&apos;s real estate market moves fast. Median home prices in the metro area sit around $550,000, but that number means nothing for your specific property. A Victorian bungalow in West Highland (80211) prices very differently than a mid-century ranch in Arvada, even if they have the same square footage.
+            </p>
+            <p className="market-context-text">
+              Our valuation process goes beyond the automated estimates that Zillow, Redfin, and Realtor.com provide. We analyze six key factors that algorithms consistently miss:
+            </p>
+            <div className="valuation-factors-grid">
+              <div className="factor-item">
+                <h3 className="factor-title">Micro-Market Pricing</h3>
+                <p className="factor-description">We compare your home to sales within a 3-block radius — not a zip code average. In neighborhoods like LoHi and West Highland, one block can mean a $50K price difference.</p>
               </div>
-              <ul className="contrast-list">
-                <li className="contrast-item contrast-item-negative">
-                  <span className="contrast-icon-x">✗</span>
-                  <span>Uses county records that are 3-6 months old</span>
-                </li>
-                <li className="contrast-item contrast-item-negative">
-                  <span className="contrast-icon-x">✗</span>
-                  <span>Cannot see renovations, upgrades, or condition</span>
-                </li>
-                <li className="contrast-item contrast-item-negative">
-                  <span className="contrast-icon-x">✗</span>
-                  <span>Ignores micro-neighborhood pricing differences</span>
-                </li>
-                <li className="contrast-item contrast-item-negative">
-                  <span className="contrast-icon-x">✗</span>
-                  <span>Designed to capture your data, not give you accuracy</span>
-                </li>
-                <li className="contrast-item contrast-item-negative">
-                  <span className="contrast-icon-x">✗</span>
-                  <span>Error margin: up to 15% in Denver metro</span>
-                </li>
-              </ul>
-            </div>
-            <div className="contrast-column contrast-column-positive">
-              <div className="contrast-header">
-                <div className="contrast-icon contrast-icon-expert">👤</div>
-                <h3 className="contrast-title">The Obsidian Valuation</h3>
+              <div className="factor-item">
+                <h3 className="factor-title">Pending & Off-Market Data</h3>
+                <p className="factor-description">Zillow only sees closed sales from weeks ago. We see what&apos;s under contract right now, giving us a real-time picture of buyer demand on your street.</p>
               </div>
-              <ul className="contrast-list">
-                <li className="contrast-item contrast-item-positive">
-                  <span className="contrast-icon-check">✓</span>
-                  <span>Uses this week's closed and pending sales data</span>
-                </li>
-                <li className="contrast-item contrast-item-positive">
-                  <span className="contrast-icon-check">✓</span>
-                  <span>Factors in every upgrade, from kitchens to landscaping</span>
-                </li>
-                <li className="contrast-item contrast-item-positive">
-                  <span className="contrast-icon-check">✓</span>
-                  <span>Adjusted for your specific block and buyer demand</span>
-                </li>
-                <li className="contrast-item contrast-item-positive">
-                  <span className="contrast-icon-check">✓</span>
-                  <span>Prepared by hand by David & Dax, not a bot</span>
-                </li>
-                <li className="contrast-item contrast-item-positive">
-                  <span className="contrast-icon-check">✓</span>
-                  <span>Trusted by 400+ Denver homeowners</span>
-                </li>
-              </ul>
+              <div className="factor-item">
+                <h3 className="factor-title">Renovation & Condition Assessment</h3>
+                <p className="factor-description">Your new kitchen, finished basement, or updated bathrooms aren&apos;t visible to algorithms. We account for every improvement that adds value.</p>
+              </div>
+              <div className="factor-item">
+                <h3 className="factor-title">Architectural Character Premium</h3>
+                <p className="factor-description">Denver&apos;s Craftsman bungalows, Victorians, and mid-century homes command premiums that algorithms don&apos;t understand. We know how to price character.</p>
+              </div>
+              <div className="factor-item">
+                <h3 className="factor-title">Seasonal Demand Patterns</h3>
+                <p className="factor-description">Denver&apos;s market has distinct seasonal cycles. Spring and early summer drive premium pricing in family neighborhoods like Sloan&apos;s Lake and Washington Park.</p>
+              </div>
+              <div className="factor-item">
+                <h3 className="factor-title">Buyer Competition Analysis</h3>
+                <p className="factor-description">We track how many active buyers are competing for homes like yours right now — not last quarter. Multiple offers mean pricing power.</p>
+              </div>
             </div>
+            <p className="market-context-text market-context-highlight">
+              The result? A defensible price backed by real data, local expertise, and 22+ combined years of Denver market experience — not a computer&apos;s best guess.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Specificity-Driven Testimonials */}
-      <section className="testimonials-section section">
+      {/* Neighborhoods We Serve */}
+      <section className="neighborhoods-served-section section">
         <div className="container">
-          <h2 className="section-heading">Real Valuations, Real Results</h2>
-          <div className="testimonials-grid-specificity">
-            <div className="testimonial-card-large">
-              <p className="testimonial-quote">
-                "We did a luxury transaction with David and his team. We were pleased with his professionalism & calmness throughout the transaction. We would totally recommend Obsidian Denver to anyone looking to buy or sell a home!"
-              </p>
-              <p className="testimonial-author">Dae Jung</p>
-              <p className="testimonial-context">Local Guide</p>
-            </div>
-            <div className="testimonial-card-large">
-              <p className="testimonial-quote">
-                "David has consistently gone above and beyond with the process of buying and selling our home. He was always quick to remediate any issues, always quick with responses to our questions and needs and gave us a clear understanding every step of the way."
-              </p>
-              <p className="testimonial-author">Rob Greenberg</p>
-              <p className="testimonial-context">Denver</p>
-            </div>
-            <div className="testimonial-card-large">
-              <p className="testimonial-quote">
-                "David Heine is incredible! He helped us purchase our downtown Denver property and made the entire process seamless. His deep market knowledge, quick communication, and genuine care for our needs made us feel confident every step of the way."
-              </p>
-              <p className="testimonial-author">Chanell Cuellar</p>
-              <p className="testimonial-context">Downtown Denver</p>
-            </div>
-            <div className="testimonial-card-large">
-              <p className="testimonial-quote">
-                "David was amazing helping us find our forever home! We looked for months and saw countless homes and never felt pressured or like we were an inconvenience. He had all the answers and the rare time he didn't, he found out for us!"
-              </p>
-              <p className="testimonial-author">Kelly Clendenin</p>
-              <p className="testimonial-context">Local Guide</p>
-            </div>
-            <div className="testimonial-card-large">
-              <p className="testimonial-quote">
-                "I've been working with David for quite some time and was finally able to find my first home! He fought for me to get max seller credits and even got the seller to buy a home warranty for me!"
-              </p>
-              <p className="testimonial-author">Chris Burtschi</p>
-              <p className="testimonial-context">First-Time Homebuyer</p>
-            </div>
-            <div className="testimonial-card-large">
-              <p className="testimonial-quote">
-                "David is my go to for anything real estate that I need or have questions on. I work with a lot of different real estate professionals and David is the best at getting the best deal for his clients."
-              </p>
-              <p className="testimonial-author">Nicholas Wanninger</p>
-              <p className="testimonial-context">Local Guide</p>
-            </div>
+          <h2 className="section-heading">Denver Neighborhoods We Value Daily</h2>
+          <p className="neighborhoods-intro">We prepare expert valuations across Denver&apos;s most sought-after neighborhoods. Our deep local knowledge means more accurate pricing for your home.</p>
+          <div className="neighborhoods-tag-grid">
+            {['West Highland', 'LoHi (Lower Highlands)', "Sloan's Lake", 'Highland', 'Berkeley', 'Sunnyside', 'Jefferson Park', 'Tennyson', 'Downtown Denver', 'Cherry Creek', 'Washington Park', 'Congress Park', 'RiNo', 'Baker', 'Platt Park', 'Arvada', 'Wheat Ridge', 'Golden', 'Lakewood'].map((n) => (
+              <span key={n} className="neighborhood-tag">{n}</span>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="faq-section section">
+        <div className="container">
+          <h2 className="section-heading">Frequently Asked Questions About Denver Home Valuations</h2>
+          <div className="faq-list">
+            <details className="faq-item">
+              <summary className="faq-question">How accurate is Zillow&apos;s Zestimate for Denver homes?</summary>
+              <p className="faq-answer">Zillow&apos;s own data shows a median error rate of 6.9% nationally. In Denver, where micro-neighborhoods like West Highland, LoHi, and Sloan&apos;s Lake have block-by-block price variations, the error can be even higher — up to 15% on unique architectural or historic properties. That&apos;s a $60,000–$90,000 swing on a $600,000 home.</p>
+            </details>
+            <details className="faq-item">
+              <summary className="faq-question">How long does it take to get my valuation?</summary>
+              <p className="faq-answer">We typically deliver your personalized valuation within 24–48 hours. Unlike automated estimates, we manually review recent comparable sales, pending transactions, and condition factors specific to your property before providing a number.</p>
+            </details>
+            <details className="faq-item">
+              <summary className="faq-question">Is the valuation really free? What&apos;s the catch?</summary>
+              <p className="faq-answer">There&apos;s no catch. The valuation is 100% free with no obligation. We provide it because informed homeowners make better decisions. If you decide to sell, we&apos;d love to be your team — but there&apos;s zero pressure.</p>
+            </details>
+            <details className="faq-item">
+              <summary className="faq-question">What&apos;s the difference between a home valuation and an appraisal?</summary>
+              <p className="faq-answer">A home valuation is a market-based estimate of what your home would sell for today, prepared by a real estate expert using comparable sales, market conditions, and local knowledge. An appraisal is a formal assessment required by lenders during a mortgage process, performed by a licensed appraiser. Our valuation gives you a realistic selling price before you commit to anything.</p>
+            </details>
+            <details className="faq-item">
+              <summary className="faq-question">Which Denver neighborhoods do you cover?</summary>
+              <p className="faq-answer">We cover all of Denver and the surrounding metro area, with deep expertise in West Highland, LoHi (Lower Highlands), Sloan&apos;s Lake, Highland, Berkeley, Sunnyside, RiNo, Cherry Creek, Washington Park, Downtown Denver, Arvada, Wheat Ridge, Golden, and Lakewood. If your home is in the Denver metro, we can value it.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ JSON-LD */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How accurate is Zillow's Zestimate for Denver homes?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Zillow's own data shows a median error rate of 6.9% nationally. In Denver, where micro-neighborhoods like West Highland, LoHi, and Sloan's Lake have block-by-block price variations, the error can be even higher — up to 15% on unique architectural or historic properties. That's a $60,000–$90,000 swing on a $600,000 home.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How long does it take to get my valuation?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We typically deliver your personalized valuation within 24–48 hours. Unlike automated estimates, we manually review recent comparable sales, pending transactions, and condition factors specific to your property before providing a number.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is the valuation really free? What's the catch?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "There's no catch. The valuation is 100% free with no obligation. We provide it because informed homeowners make better decisions. If you decide to sell, we'd love to be your team — but there's zero pressure.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What's the difference between a home valuation and an appraisal?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "A home valuation is a market-based estimate of what your home would sell for today, prepared by a real estate expert using comparable sales, market conditions, and local knowledge. An appraisal is a formal assessment required by lenders during a mortgage process, performed by a licensed appraiser. Our valuation gives you a realistic selling price before you commit to anything.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Which Denver neighborhoods do you cover?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We cover all of Denver and the surrounding metro area, with deep expertise in West Highland, LoHi (Lower Highlands), Sloan's Lake, Highland, Berkeley, Sunnyside, RiNo, Cherry Creek, Washington Park, Downtown Denver, Arvada, Wheat Ridge, Golden, and Lakewood.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Authority Section */}
       <section className="authority-section section">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -10,9 +10,33 @@ const playfair = Playfair_Display({
   weight: ['400', '600', '700']
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+};
+
 export const metadata: Metadata = {
-  title: "Obsidian Denver",
-  description: "Landing pages",
+  title: "Obsidian Denver | Architectural & Historic Homes | West Highland, LoHi, Sloan's Lake",
+  description: "Denver's boutique real estate team specializing in architectural, historic, and luxury properties across West Highland, LoHi, and Sloan's Lake. KW Urban Elite. David & Dax — Co-Founders.",
+  keywords: [
+    "Denver real estate",
+    "West Highland homes for sale",
+    "LoHi real estate",
+    "Sloan's Lake homes",
+    "Denver luxury homes",
+    "Denver historic homes",
+    "Denver realtor",
+    "Keller Williams Urban Elite Denver",
+  ],
+  openGraph: {
+    title: "Obsidian Denver | Architectural & Historic Homes",
+    description: "Denver's boutique real estate team specializing in architectural, historic, and luxury properties across West Highland, LoHi, and Sloan's Lake.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Obsidian Denver",
+  },
 };
 
 export default function RootLayout({
@@ -23,16 +47,87 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        {/* Google Tag Manager */}
+        {/* JSON-LD Structured Data: RealEstateAgent + LocalBusiness */}
         <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["RealEstateAgent", "LocalBusiness"],
+              name: "Obsidian Denver",
+              description:
+                "Denver's boutique real estate team specializing in architectural, historic, and luxury properties across West Highland, LoHi, and Sloan's Lake.",
+              url: "https://obsidiandenver.com",
+              telephone: "+17207066768",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "4045 N Pecos St #201",
+                addressLocality: "Denver",
+                addressRegion: "CO",
+                postalCode: "80211",
+                addressCountry: "US",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 39.7713,
+                longitude: -105.0166,
+              },
+              areaServed: [
+                { "@type": "City", name: "Denver, CO" },
+                { "@type": "Neighborhood", name: "West Highland, Denver" },
+                { "@type": "Neighborhood", name: "LoHi, Denver" },
+                { "@type": "Neighborhood", name: "Sloan's Lake, Denver" },
+                { "@type": "Neighborhood", name: "Highland, Denver" },
+                { "@type": "Neighborhood", name: "Berkeley, Denver" },
+                { "@type": "City", name: "Arvada, CO" },
+              ],
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "5.0",
+                reviewCount: "19",
+                bestRating: "5",
+              },
+              priceRange: "$$$$",
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                ],
+                opens: "08:00",
+                closes: "19:00",
+              },
+              member: [
+                {
+                  "@type": "Person",
+                  name: "David",
+                  jobTitle: "Co-Founder & Real Estate Expert",
+                },
+                {
+                  "@type": "Person",
+                  name: "Dax",
+                  jobTitle: "Co-Founder & Real Estate Expert",
+                },
+              ],
+              parentOrganization: {
+                "@type": "Organization",
+                name: "Keller Williams Urban Elite",
+              },
+            }),
+          }}
+        />
+        {/* Google Tag Manager */}
+        <Script id="gtm-script" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TWK9Q9NR');`,
-          }}
-        />
+})(window,document,'script','dataLayer','GTM-TWK9Q9NR');`}
+        </Script>
         {/* End Google Tag Manager */}
       </head>
       <body>

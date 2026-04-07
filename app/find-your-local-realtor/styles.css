@@ -1038,3 +1038,163 @@
     font-size: var(--font-size-sm);
   }
 }
+
+/* Local Expertise Section */
+.local-expertise-section {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  background: white;
+}
+
+.expertise-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.expertise-text {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  color: rgba(26, 26, 26, 0.8);
+  margin-bottom: var(--spacing-lg);
+}
+
+.expertise-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.expertise-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xl);
+  background: var(--color-off-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-soft-gray);
+}
+
+.stat-number {
+  font-family: var(--font-serif), serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-accent-bronze);
+}
+
+.stat-label {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: rgba(26, 26, 26, 0.65);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .expertise-stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Neighborhoods Expertise Section */
+.neighborhoods-expertise-section {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  background: var(--color-off-white);
+}
+
+.neighborhoods-intro {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: rgba(26, 26, 26, 0.7);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.neighborhoods-tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.neighborhood-tag {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-soft-gray);
+  border-radius: 100px;
+  color: var(--color-near-black);
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.neighborhood-tag:hover {
+  background: var(--color-accent-bronze);
+  color: white;
+  border-color: var(--color-accent-bronze);
+}
+
+/* FAQ Section */
+.faq-section {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+  background: white;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-soft-gray);
+  padding: var(--spacing-lg) 0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--color-soft-gray);
+}
+
+.faq-question {
+  font-family: var(--font-serif), serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-near-black);
+  cursor: pointer;
+  padding: var(--spacing-sm) 0;
+  list-style: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::before {
+  content: '+';
+  display: inline-block;
+  width: 1.5rem;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: var(--color-accent-bronze);
+  transition: transform 0.2s ease;
+}
+
+details[open] .faq-question::before {
+  content: '−';
+}
+
+.faq-answer {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  color: rgba(26, 26, 26, 0.75);
+  padding: var(--spacing-sm) 0 var(--spacing-sm) 1.5rem;
+  max-width: 720px;
+}

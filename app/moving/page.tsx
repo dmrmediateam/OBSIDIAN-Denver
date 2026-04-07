@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Script from 'next/script';
 import SiteFooter from '../components/SiteFooter';
 import './styles.css';
 
@@ -322,6 +323,7 @@ export default function Moving() {
 
       {/* What Your Family Gets Section */}
       <section className="family-benefits-section section">
+
         <div className="container">
           <h2 className="section-heading">What Your Family Gets When You Work With Us</h2>
           <div className="benefits-grid">
@@ -353,6 +355,205 @@ export default function Moving() {
           </div>
         </div>
       </section>
+
+      {/* Denver Cost of Living Section */}
+      <section className="denver-col-section section">
+        <div className="container">
+          <h2 className="section-heading">What Does It Actually Cost to Live in Denver?</h2>
+          <p className="col-intro">
+            One of the biggest questions families have before relocating is what their budget looks like in Denver compared to where they currently live. Here's the real picture — not the sugar-coated version you'll find on relocation brochures.
+          </p>
+          <div className="col-grid">
+            <div className="col-card">
+              <h3 className="col-card-title">Housing</h3>
+              <p className="col-card-stat">$550K</p>
+              <p className="col-card-label">Median Home Price (Denver Metro)</p>
+              <p className="col-card-detail">West Highland & LoHi typically range $650K–$1.2M. Suburbs like Arvada and Wheat Ridge offer more at $450K–$650K. We'll help you find the sweet spot for your budget.</p>
+            </div>
+            <div className="col-card">
+              <h3 className="col-card-title">Property Taxes</h3>
+              <p className="col-card-stat">0.51%</p>
+              <p className="col-card-label">Effective Rate (Colorado Average)</p>
+              <p className="col-card-detail">Significantly lower than most states. On a $600K home, expect ~$3,060/year. Colorado's TABOR amendment limits tax increases without voter approval.</p>
+            </div>
+            <div className="col-card">
+              <h3 className="col-card-title">Income Tax</h3>
+              <p className="col-card-stat">4.4%</p>
+              <p className="col-card-label">Colorado Flat Rate</p>
+              <p className="col-card-detail">Colorado has a flat income tax — no brackets. If you're coming from California (13.3% top rate) or New York (10.9%), this is a significant savings.</p>
+            </div>
+            <div className="col-card">
+              <h3 className="col-card-title">Childcare</h3>
+              <p className="col-card-stat">$1,400–$2,200</p>
+              <p className="col-card-label">Monthly per Child (Full-Time)</p>
+              <p className="col-card-detail">Denver childcare is on the higher end nationally. Colorado's Universal Preschool program (free for 4-year-olds) helps offset costs starting in 2025.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Denver Neighborhoods Overview */}
+      <section className="neighborhoods-overview-section section">
+        <div className="container">
+          <h2 className="section-heading">Denver Neighborhoods We Know Best</h2>
+          <p className="neighborhoods-intro">
+            Denver isn't one city — it's 78 distinct neighborhoods, each with its own personality. As Obsidian Denver's relocation specialists, we focus on the neighborhoods where families thrive. Here's where we guide most of our relocating clients:
+          </p>
+          <div className="neighborhoods-grid">
+            <div className="neighborhood-card">
+              <h3 className="neighborhood-name">West Highland</h3>
+              <p className="neighborhood-vibe">Our home turf. Craftsman bungalows, tree-lined streets, Tennyson Street shops. Top-rated Centennial Elementary. 10-min drive to downtown.</p>
+              <p className="neighborhood-price">Median: $650K–$850K</p>
+            </div>
+            <div className="neighborhood-card">
+              <h3 className="neighborhood-name">LoHi (Lower Highlands)</h3>
+              <p className="neighborhood-vibe">Denver's most walkable neighborhood. Restaurants, rooftop bars, Highland Bridge to downtown. Modern townhomes and renovated Victorians.</p>
+              <p className="neighborhood-price">Median: $700K–$1.1M</p>
+            </div>
+            <div className="neighborhood-card">
+              <h3 className="neighborhood-name">Sloan's Lake</h3>
+              <p className="neighborhood-vibe">Denver's best-kept secret. Lake access, mountain views, growing restaurant scene. Mix of new construction and character homes.</p>
+              <p className="neighborhood-price">Median: $550K–$900K</p>
+            </div>
+            <div className="neighborhood-card">
+              <h3 className="neighborhood-name">Washington Park</h3>
+              <p className="neighborhood-vibe">Classic Denver family neighborhood. Huge park, great schools, beautiful bungalows. South High School district.</p>
+              <p className="neighborhood-price">Median: $700K–$1.2M</p>
+            </div>
+            <div className="neighborhood-card">
+              <h3 className="neighborhood-name">Cherry Creek</h3>
+              <p className="neighborhood-vibe">Denver's luxury address. High-end shopping, top restaurants, Cherry Creek School District (highest rated in the metro).</p>
+              <p className="neighborhood-price">Median: $900K–$2M+</p>
+            </div>
+            <div className="neighborhood-card">
+              <h3 className="neighborhood-name">Arvada</h3>
+              <p className="neighborhood-vibe">Suburban feel with Old Town charm. Great value, A-rated Jefferson County schools, G-Line light rail to downtown in 25 minutes.</p>
+              <p className="neighborhood-price">Median: $500K–$650K</p>
+            </div>
+          </div>
+          <p className="neighborhoods-cta-text">
+            Not sure which neighborhood fits your family? That's exactly what our relocation consultation covers.
+          </p>
+          <button className="neighborhoods-cta-button" onClick={scrollToForm}>
+            Get Your Neighborhood Match
+          </button>
+        </div>
+      </section>
+
+      {/* Denver School Districts */}
+      <section className="schools-section section">
+        <div className="container">
+          <h2 className="section-heading">Denver School Districts: What Relocating Families Need to Know</h2>
+          <p className="schools-intro">
+            For families with school-age children, the school district often determines the neighborhood. Here's the landscape:
+          </p>
+          <div className="schools-grid">
+            <div className="school-card">
+              <h3 className="school-name">Cherry Creek School District</h3>
+              <p className="school-rating">Rating: A+</p>
+              <p className="school-detail">Colorado's highest-rated large district. Serves Greenwood Village, Centennial, and parts of Aurora. Top pick for families prioritizing academics.</p>
+            </div>
+            <div className="school-card">
+              <h3 className="school-name">Denver Public Schools (DPS)</h3>
+              <p className="school-rating">Rating: B</p>
+              <p className="school-detail">Covers all Denver proper neighborhoods. Quality varies significantly by school — we know which schools are the hidden gems (Centennial Elementary, Slavens K-8, Bromwell Elementary).</p>
+            </div>
+            <div className="school-card">
+              <h3 className="school-name">Jefferson County (Jeffco)</h3>
+              <p className="school-rating">Rating: A-</p>
+              <p className="school-detail">Covers Arvada, Lakewood, Golden, Wheat Ridge. Colorado's largest district with strong STEM programs and outdoor education.</p>
+            </div>
+            <div className="school-card">
+              <h3 className="school-name">Douglas County</h3>
+              <p className="school-rating">Rating: A+</p>
+              <p className="school-detail">Colorado's top-rated district. Serves Castle Rock, Highlands Ranch, Parker. 30–45 min south of downtown Denver. Best for families willing to commute for schools.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section with Schema */}
+      <section className="faq-section section">
+        <div className="container">
+          <h2 className="section-heading">Frequently Asked Questions About Moving to Denver</h2>
+          <div className="faq-list">
+            <div className="faq-item">
+              <h3 className="faq-question">What is the cost of living in Denver compared to other major cities?</h3>
+              <p className="faq-answer">Denver's cost of living is approximately 10–15% above the national average, but significantly lower than San Francisco, New York, or Los Angeles. Housing is the largest factor. The median home price in the Denver metro is around $550,000, with desirable neighborhoods like West Highland and LoHi ranging $650K–$1.2M. Colorado's flat 4.4% income tax and low property taxes (0.51% effective rate) offset housing costs for many relocating families.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-question">What are the best neighborhoods in Denver for families with children?</h3>
+              <p className="faq-answer">The best Denver neighborhoods for families depend on your priorities. West Highland and Sloan's Lake offer a balance of walkability, great schools (Centennial Elementary), and character homes. Washington Park is a classic family neighborhood with Denver's best park. Cherry Creek and Greenwood Village have Colorado's top-rated school district. Arvada offers excellent Jefferson County schools with more affordable housing and light rail access to downtown.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-question">How long does it take to find a home when relocating to Denver?</h3>
+              <p className="faq-answer">Most relocating families we work with find their home within 2–4 weeks of active searching. The key is preparation: before you arrive, we pre-screen neighborhoods, analyze school districts, and build a curated shortlist based on your family's priorities. This means your house-hunting trips are efficient and focused, not exhausting and random. From offer to closing, expect 30–45 days in Colorado.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-question">Is Denver a good place to raise a family?</h3>
+              <p className="faq-answer">Denver consistently ranks among the top 10 cities in the U.S. for families. With 300+ days of sunshine, world-class outdoor recreation (skiing is 90 minutes away), a strong job market (especially tech, aerospace, healthcare, and energy), and diverse neighborhood options, Denver offers a quality of life that's hard to match. The city's park system, bike infrastructure, and proximity to the Rocky Mountains make it ideal for active families.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-question">Do I need a local realtor when relocating to Denver?</h3>
+              <p className="faq-answer">Absolutely. Denver's real estate market moves fast — homes in popular neighborhoods often receive multiple offers within days. A local realtor who knows the micro-markets, off-market opportunities, and neighborhood nuances will save you time, money, and stress. At Obsidian Denver, we specialize in helping relocating families navigate the market with a structured, data-driven approach rather than guesswork.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Schema */}
+      <Script
+        id="moving-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'What is the cost of living in Denver compared to other major cities?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: "Denver's cost of living is approximately 10–15% above the national average, but significantly lower than San Francisco, New York, or Los Angeles. Housing is the largest factor. The median home price in the Denver metro is around $550,000. Colorado's flat 4.4% income tax and low property taxes (0.51% effective rate) offset housing costs for many relocating families.",
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What are the best neighborhoods in Denver for families with children?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'West Highland and Sloan\'s Lake offer walkability, great schools, and character homes. Washington Park is a classic family neighborhood. Cherry Creek and Greenwood Village have Colorado\'s top-rated school district. Arvada offers excellent schools with more affordable housing and light rail access.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'How long does it take to find a home when relocating to Denver?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Most relocating families find their home within 2–4 weeks of active searching. With preparation and pre-screening by a local expert, house-hunting trips are efficient and focused. From offer to closing, expect 30–45 days in Colorado.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Is Denver a good place to raise a family?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Denver consistently ranks among the top 10 cities in the U.S. for families with 300+ days of sunshine, world-class outdoor recreation, a strong job market, and diverse neighborhood options.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Do I need a local realtor when relocating to Denver?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: "Absolutely. Denver's market moves fast with homes receiving multiple offers within days. A local realtor who knows micro-markets and neighborhood nuances saves time, money, and stress. Obsidian Denver specializes in helping relocating families with a structured, data-driven approach.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Team Section */}
       <section className="team-section section">

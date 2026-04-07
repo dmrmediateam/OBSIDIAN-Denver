@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Script from 'next/script';
 import SiteFooter from '../components/SiteFooter';
 import './styles.css';
 
@@ -287,6 +288,134 @@ export default function FindYourLocalRealtor() {
           </div>
         </div>
       </section>
+
+      {/* Why Denver Buyers Need a Local Expert */}
+      <section className="local-expertise-section section">
+        <div className="container">
+          <h2 className="section-heading">Why Denver Buyers Need a Neighborhood-Level Expert</h2>
+          <div className="expertise-content">
+            <p className="expertise-text">
+              Denver&apos;s real estate market isn&apos;t one market — it&apos;s dozens of micro-markets layered on top of each other. A 1920s Craftsman bungalow in West Highland prices completely differently from a new-build townhome in RiNo, even if they share the same square footage and bedroom count. The agent who knows this difference is the one who saves you money.
+            </p>
+            <p className="expertise-text">
+              Consider the numbers: Denver&apos;s median home price hovers around $550,000, but neighborhood-level pricing tells a very different story. Homes in Cherry Creek average well over $1M, while Berkeley and Sunnyside offer entry points closer to $500K–$650K. An agent who doesn&apos;t understand these gradients will either undershoot your budget (missing your dream home) or overshoot it (costing you tens of thousands).
+            </p>
+            <div className="expertise-stats-row">
+              <div className="expertise-stat">
+                <span className="stat-number">$50K+</span>
+                <span className="stat-label">Average savings with a top negotiator vs. average agent</span>
+              </div>
+              <div className="expertise-stat">
+                <span className="stat-number">6 Days</span>
+                <span className="stat-label">Average days on market for well-priced Denver homes</span>
+              </div>
+              <div className="expertise-stat">
+                <span className="stat-number">73%</span>
+                <span className="stat-label">Of Denver homes sell at or above asking price</span>
+              </div>
+            </div>
+            <p className="expertise-text">
+              In a market this competitive, the right agent isn&apos;t a nice-to-have — it&apos;s the difference between getting the home and losing it. Our matching process ensures you work with someone who has closed deals on your target streets, not just your target zip code.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Neighborhoods We Specialize In */}
+      <section className="neighborhoods-expertise-section section">
+        <div className="container">
+          <h2 className="section-heading">Denver Neighborhoods We Know Best</h2>
+          <p className="neighborhoods-intro">Every neighborhood has its own personality, pricing dynamics, and hidden opportunities. We match you with an agent who specializes in where you want to live.</p>
+          <div className="neighborhoods-tag-grid">
+            {['West Highland', 'LoHi (Lower Highlands)', "Sloan's Lake", 'Highland', 'Berkeley', 'Sunnyside', 'Jefferson Park', 'Tennyson Street', 'Downtown Denver', 'Cherry Creek', 'Washington Park', 'Congress Park', 'RiNo (River North)', 'Baker', 'Platt Park', 'Arvada', 'Wheat Ridge', 'Golden', 'Lakewood', 'Stapleton / Central Park', 'Park Hill', 'Hilltop', 'Bonnie Brae'].map((n) => (
+              <span key={n} className="neighborhood-tag">{n}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="faq-section section">
+        <div className="container">
+          <h2 className="section-heading">Frequently Asked Questions About Finding a Denver Realtor</h2>
+          <div className="faq-list">
+            <details className="faq-item">
+              <summary className="faq-question">How is this different from Zillow or Realtor.com agent matching?</summary>
+              <p className="faq-answer">Zillow and Realtor.com sell leads to agents who pay the most for advertising — not agents who are the best fit for you. Our process is the opposite: we match based on neighborhood expertise, transaction history, client reviews, and communication style. You get a vetted local expert, not whoever paid the highest bid.</p>
+            </details>
+            <details className="faq-item">
+              <summary className="faq-question">Is this service really free?</summary>
+              <p className="faq-answer">Yes, 100% free to you. There&apos;s no cost, no hidden fees, and no obligation. Real estate agents pay a commission at closing (typically covered by the seller), so our matching service costs buyers nothing.</p>
+            </details>
+            <details className="faq-item">
+              <summary className="faq-question">How quickly will I get matched?</summary>
+              <p className="faq-answer">Most matches happen within 24–48 hours. We review your preferences, cross-reference our agent network, and connect you with someone who has specific experience in your target neighborhoods and price range.</p>
+            </details>
+            <details className="faq-item">
+              <summary className="faq-question">What if I don&apos;t like my matched agent?</summary>
+              <p className="faq-answer">No problem. You&apos;re never locked in. If the fit doesn&apos;t feel right, tell us and we&apos;ll re-match you with another agent at no cost. Our goal is your satisfaction, not a quick placement.</p>
+            </details>
+            <details className="faq-item">
+              <summary className="faq-question">Do you cover all of Denver, or just certain areas?</summary>
+              <p className="faq-answer">We cover the entire Denver metro area, including Denver proper, Arvada, Wheat Ridge, Golden, Lakewood, Littleton, Aurora, and surrounding communities. Our strongest coverage is in West Highland, LoHi, Sloan&apos;s Lake, Highlands, Cherry Creek, and Washington Park — but we have agents across the full metro.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ JSON-LD */}
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How is this different from Zillow or Realtor.com agent matching?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Zillow and Realtor.com sell leads to agents who pay the most for advertising — not agents who are the best fit for you. Our process matches based on neighborhood expertise, transaction history, client reviews, and communication style.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is this service really free?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes, 100% free to you. There's no cost, no hidden fees, and no obligation. Real estate agents pay a commission at closing (typically covered by the seller), so our matching service costs buyers nothing.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How quickly will I get matched?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Most matches happen within 24–48 hours. We review your preferences, cross-reference our agent network, and connect you with someone who has specific experience in your target neighborhoods and price range.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What if I don't like my matched agent?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "No problem. You're never locked in. If the fit doesn't feel right, tell us and we'll re-match you with another agent at no cost.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Do you cover all of Denver, or just certain areas?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We cover the entire Denver metro area, including Denver proper, Arvada, Wheat Ridge, Golden, Lakewood, Littleton, Aurora, and surrounding communities. Our strongest coverage is in West Highland, LoHi, Sloan's Lake, Highlands, Cherry Creek, and Washington Park.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Pain/Problem Section (Loss Aversion Focus) */}
       <section className="pain-section section">

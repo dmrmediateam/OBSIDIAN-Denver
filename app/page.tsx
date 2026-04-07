@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import SiteFooter from './components/SiteFooter';
 import './globals.css';
 
@@ -104,225 +105,230 @@ export default function Home() {
           <p className="hero-trust-line">
             KW Urban Elite • Denver (80211) • West Highland • LoHi • Sloan's Lake
           </p>
-          
-          <div className="scroll-indicator">
-            <div className="scroll-arrow"></div>
-          </div>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section id="valuation-form" className="home-valuation-form-section">
-        <div className="form-content">
-          <h2 className="form-heading">Find Out What Your Home Is Really Worth</h2>
-          
-          <form className="valuation-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="address" className="form-label">
-                Address *
-              </label>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                className="form-input"
-                placeholder="123 Main Street"
-                required
-              />
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="city" className="form-label">
-                  City *
-                </label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  className="form-input"
-                  placeholder="Denver"
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="zip" className="form-label">
-                  ZIP Code *
-                </label>
-                <input
-                  type="text"
-                  id="zip"
-                  name="zip"
-                  className="form-input"
-                  placeholder="80202"
-                  pattern="[0-9]{5}"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="name" className="form-label">
-                Name *
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="form-input"
-                placeholder="Your full name"
-                required
-              />
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="email" className="form-label">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="form-input"
-                  placeholder="your.email@example.com"
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="phone" className="form-label">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="form-input"
-                  placeholder="(303) 555-1234"
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              className="submit-button"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Submitting...' : 'Get My Accurate Home Value'}
-            </button>
-            
-            {submitStatus === 'error' && (
-              <p className="form-error-message">
-                There was an error submitting your request. Please try again or contact us directly.
-              </p>
-            )}
-            
-            <p className="trust-microcopy">
-              No spam. No pressure. Your valuation is prepared personally by a Denver real estate expert.
-            </p>
-          </form>
-        </div>
-      </section>
-
-      {/* Meet the Team Section */}
-      <section className="home-team-section">
+      {/* Service Cards Section */}
+      <section className="home-service-cards-section">
         <div className="container">
-          <h2 className="section-heading">Meet Your Team</h2>
-          <div className="team-grid">
-            <div className="team-member">
-              <div className="team-image-wrapper">
-                <Image 
-                  src="/KWUE_3%20(1).webp" 
-                  alt="David" 
-                  width={320}
-                  height={320}
-                  className="team-image"
-                  priority
+          <div className="service-cards-grid">
+            <Link href="/home-valuation" className="service-card">
+              <div className="service-card-image-wrapper">
+                <Image
+                  src="/new/aspen-metzger-K39ncY0WmDY-unsplash.jpg"
+                  alt="Denver home exterior — get your free home valuation"
+                  width={600}
+                  height={400}
+                  className="service-card-image"
                 />
+                <div className="service-card-overlay"></div>
               </div>
-              <h3 className="team-name">David</h3>
-              <p className="team-title">Co-Founder & Real Estate Expert</p>
-            </div>
-            <div className="team-member">
-              <div className="team-image-wrapper">
-                <Image 
-                  src="/JHP_0162_S%20(1).webp" 
-                  alt="Dax" 
-                  width={320}
-                  height={320}
-                  className="team-image"
-                  priority
+              <div className="service-card-content">
+                <h3 className="service-card-title">Home Valuation</h3>
+                <p className="service-card-description">Find out what your Denver home is really worth — from experts, not algorithms.</p>
+                <span className="service-card-link">Get Your Valuation →</span>
+              </div>
+            </Link>
+            <Link href="/find-your-local-realtor" className="service-card">
+              <div className="service-card-image-wrapper">
+                <Image
+                  src="/new/sebastian-kurpiel-vAGFcyJN5B4-unsplash.jpg"
+                  alt="Denver neighborhood street — find your local realtor"
+                  width={600}
+                  height={400}
+                  className="service-card-image"
                 />
+                <div className="service-card-overlay"></div>
               </div>
-              <h3 className="team-name">Dax</h3>
-              <p className="team-title">Co-Founder & Real Estate Expert</p>
-            </div>
+              <div className="service-card-content">
+                <h3 className="service-card-title">Find Your Realtor</h3>
+                <p className="service-card-description">Get matched with a vetted, top-performing Denver agent in your neighborhood.</p>
+                <span className="service-card-link">Get Matched →</span>
+              </div>
+            </Link>
+            <Link href="/moving" className="service-card">
+              <div className="service-card-image-wrapper">
+                <Image
+                  src="/new/jason-hawke--xm0FxM5Bfo-unsplash.jpg"
+                  alt="Colorado mountains — relocating to Denver guide"
+                  width={600}
+                  height={400}
+                  className="service-card-image"
+                />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-content">
+                <h3 className="service-card-title">Moving to Denver</h3>
+                <p className="service-card-description">Relocating with family? We handle the housing so you can focus on the move.</p>
+                <span className="service-card-link">Start Your Relocation →</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Reviews Section */}
+      {/* Form + Team Combined Row */}
+      <section id="valuation-form" className="home-form-team-section">
+        <div className="form-team-row">
+            {/* Form Column */}
+            <div className="form-column">
+              <h2 className="form-heading">Find Out What Your Home Is Really Worth</h2>
+              
+              <form className="valuation-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="address" className="form-label">
+                    Address *
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    className="form-input"
+                    placeholder="123 Main Street"
+                    required
+                  />
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="city" className="form-label">
+                      City *
+                    </label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      className="form-input"
+                      placeholder="Denver"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="zip" className="form-label">
+                      ZIP Code *
+                    </label>
+                    <input
+                      type="text"
+                      id="zip"
+                      name="zip"
+                      className="form-input"
+                      placeholder="80202"
+                      pattern="[0-9]{5}"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="name" className="form-label">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="form-input"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="email" className="form-label">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="form-input"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phone" className="form-label">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="form-input"
+                      placeholder="(303) 555-1234"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="submit-button"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Get My Accurate Home Value'}
+                </button>
+                
+                {submitStatus === 'error' && (
+                  <p className="form-error-message">
+                    There was an error submitting your request. Please try again or contact us directly.
+                  </p>
+                )}
+                
+                <p className="trust-microcopy">
+                  No spam. No pressure. Your valuation is prepared personally by a Denver real estate expert.
+                </p>
+              </form>
+            </div>
+
+            {/* Team Column */}
+            <div className="team-column">
+              <h2 className="team-column-heading">Meet Your Team</h2>
+              <div className="team-column-members">
+                <div className="team-member">
+                  <div className="team-image-wrapper">
+                    <Image 
+                      src="/KWUE_3%20(1).webp" 
+                      alt="David — Co-Founder of Obsidian Denver" 
+                      width={320}
+                      height={320}
+                      className="team-image"
+                      priority
+                    />
+                  </div>
+                  <h3 className="team-name">David</h3>
+                  <p className="team-title">Co-Founder & Real Estate Expert</p>
+                </div>
+                <div className="team-member">
+                  <div className="team-image-wrapper">
+                    <Image 
+                      src="/JHP_0162_S%20(1).webp" 
+                      alt="Dax — Co-Founder of Obsidian Denver" 
+                      width={320}
+                      height={320}
+                      className="team-image"
+                      priority
+                    />
+                  </div>
+                  <h3 className="team-name">Dax</h3>
+                  <p className="team-title">Co-Founder & Real Estate Expert</p>
+                </div>
+              </div>
+              <p className="team-column-tagline">
+                Architectural + Historic Home Specialists<br />
+                KW Urban Elite · Denver (80211)
+              </p>
+            </div>
+          </div>
+      </section>
+
+      {/* Reviews Section — Elfsight All-in-One Reviews | Dax+David + Obsidian */}
       <section className="home-reviews-section">
         <div className="container">
-          <h2 className="section-heading">What Our Clients Say</h2>
-          <div className="reviews-grid">
-            <div className="review-card">
-              <p className="review-quote">
-                "We did a luxury transaction with David and his team. We were pleased with his professionalism & calmness throughout the transaction. We would totally recommend Obsidian Denver to anyone looking to buy or sell a home!"
-              </p>
-              <p className="review-author">Dae Jung</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "David was there for everything I needed! Great business 10/10 recommend"
-              </p>
-              <p className="review-author">Kyle Rupert</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "As a first-time homebuyer, I was nervous going into the process, but David made it feel manageable every step of the way. He worked relentlessly for my family, and the result was securing our first home."
-              </p>
-              <p className="review-author">Kyle Boten</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "Dax helped me find my home in Arvada. He was very knowledgable, great negotiator and very communicative. As a first time home buyer, I am so glad I found Dax and I highly recommend him."
-              </p>
-              <p className="review-author">Daisy Galo</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "David Heine is incredible! He helped us purchase our downtown Denver property and made the entire process seamless. His deep market knowledge, quick communication, and genuine care for our needs made us feel confident every step of the way."
-              </p>
-              <p className="review-author">Chanell Cuellar</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "David was amazing helping us find our forever home! We looked for months and saw countless homes and never felt pressured or like we were an inconvenience. He had all the answers and the rare time he didn't, he found out for us!"
-              </p>
-              <p className="review-author">Kelly Clendenin</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "David has consistently gone above and beyond with the process of buying and selling our home. He was always quick to remediate any issues, always quick with responses to our questions and needs."
-              </p>
-              <p className="review-author">Rob Greenberg</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "I just completed my first home purchase and couldn't have done it without David by my side. He worked with me to understand the market, home buying process, and put forth a plan."
-              </p>
-              <p className="review-author">Sarah Muha</p>
-            </div>
-            <div className="review-card">
-              <p className="review-quote">
-                "David was fantastic throughout my entire home buying experience. Knowledgeable, patient, and always available to answer my questions. David helped me find the perfect home and made the closing process a breeze."
-              </p>
-              <p className="review-author">Scott McCoy</p>
-            </div>
-          </div>
+          <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+          <div className="elfsight-app-6a8fddef-b305-41ad-b4b2-85906d6fbbe2" data-elfsight-app-lazy></div>
         </div>
       </section>
 

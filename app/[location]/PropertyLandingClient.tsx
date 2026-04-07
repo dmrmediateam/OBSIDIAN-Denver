@@ -4,30 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Barlow, Barlow_Condensed, Cormorant_Garamond } from 'next/font/google';
 import SiteFooter from '../components/SiteFooter';
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['300', '400'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-  variable: '--font-display',
-});
-
-const barlow = Barlow({
-  subsets: ['latin'],
-  weight: ['300', '400'],
-  display: 'swap',
-  variable: '--font-body',
-});
-
-const barlowCondensed = Barlow_Condensed({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  display: 'swap',
-  variable: '--font-ui',
-});
 
 const photoPaths = {
   hero: '/01-virtual%20Enhanced-2026-02-10T04-15-15.webp',
@@ -559,7 +536,7 @@ export default function PropertyLandingClient() {
   const activeCounter = lightboxIndex !== null ? lightboxIndex + 1 : 0;
 
   return (
-    <div ref={pageRef} className={`${cormorant.variable} ${barlow.variable} ${barlowCondensed.variable} propertyPage ${heroLoaded ? 'hero-loaded' : ''}`}>
+    <div ref={pageRef} className={`propertyPage ${heroLoaded ? 'hero-loaded' : ''}`}>
       <header ref={heroSectionRef} className="heroSection">
         <div className="heroMedia">
           <Image
@@ -1076,14 +1053,14 @@ export default function PropertyLandingClient() {
         .propertyPage {
           --cream: #f8f7f4;
           --ink: #1a1a1a;
-          --warm: #8a7255;
+          --warm: #8b7355;
           --warm-lt: #b09a7e;
-          --warm-dim: rgba(138, 114, 85, 0.12);
+          --warm-dim: rgba(139, 115, 85, 0.12);
           --border: rgba(26, 26, 26, 0.1);
-          --border-w: rgba(138, 114, 85, 0.25);
+          --border-w: rgba(139, 115, 85, 0.25);
           background: var(--cream);
           color: var(--ink);
-          font-family: var(--font-body), sans-serif;
+          font-family: var(--font-sans), -apple-system, sans-serif;
         }
 
         .propertyPage * {
@@ -1128,11 +1105,12 @@ export default function PropertyLandingClient() {
         .brandMark {
           display: inline-flex;
           align-items: center;
-          font-family: var(--font-display), serif;
-          font-size: 1.8rem;
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: 1.5rem;
+          font-weight: 700;
           color: rgba(248, 247, 244, 0.96);
           text-shadow: 0 3px 18px rgba(0, 0, 0, 0.4);
+          letter-spacing: -0.01em;
         }
 
         .navRight {
@@ -1144,9 +1122,9 @@ export default function PropertyLandingClient() {
         .navLinks {
           display: flex;
           gap: 1.3rem;
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.84rem;
-          letter-spacing: 0.14em;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
           color: rgba(248, 247, 244, 0.96);
           text-shadow: 0 3px 18px rgba(0, 0, 0, 0.4);
@@ -1169,10 +1147,10 @@ export default function PropertyLandingClient() {
 
         .heroTopCta {
           color: rgba(248, 247, 244, 0.98) !important;
-          font-family: var(--font-ui), sans-serif;
-          font-size: 0.84rem;
-          font-weight: 500;
-          letter-spacing: 0.14em;
+          font-family: var(--font-sans), sans-serif;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.06em;
           text-transform: uppercase;
           text-shadow: 0 3px 18px rgba(0, 0, 0, 0.4);
         }
@@ -1226,10 +1204,10 @@ export default function PropertyLandingClient() {
         .agentRole,
         .agentLink span,
         .scoreLabel {
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.72rem;
-          font-weight: 500;
-          letter-spacing: 0.16em;
+          font-weight: 600;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
         }
 
@@ -1253,10 +1231,10 @@ export default function PropertyLandingClient() {
           flex-direction: column;
           gap: 0.1em;
           margin: 0;
-          font-family: var(--font-display), serif;
-          font-size: clamp(3.6rem, 7vw, 6.2rem);
-          line-height: 0.94;
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: clamp(3rem, 6vw, 5rem);
+          line-height: 1.0;
+          font-weight: 700;
           color: rgba(248, 247, 244, 0.96);
           text-shadow: 0 12px 34px rgba(0, 0, 0, 0.52);
         }
@@ -1289,9 +1267,9 @@ export default function PropertyLandingClient() {
         }
 
         .heroMetaValue {
-          font-family: var(--font-display), serif;
-          font-size: clamp(1.55rem, 2.3vw, 2.05rem);
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: clamp(1.35rem, 2vw, 1.75rem);
+          font-weight: 700;
           color: rgba(248, 247, 244, 0.98);
           text-shadow: 0 10px 28px rgba(0, 0, 0, 0.62);
           line-height: 1;
@@ -1337,9 +1315,10 @@ export default function PropertyLandingClient() {
           border-radius: 999px;
           background: rgba(248, 247, 244, 0.08);
           color: var(--cream);
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.68rem;
-          letter-spacing: 0.14em;
+          font-weight: 600;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
           cursor: pointer;
         }
@@ -1353,20 +1332,20 @@ export default function PropertyLandingClient() {
         .quickLeadField span {
           margin: 0;
           color: rgba(248, 247, 244, 0.74);
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.68rem;
-          font-weight: 500;
-          letter-spacing: 0.16em;
+          font-weight: 600;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
         }
 
         .quickLeadTitle {
           margin: 0.6rem 0 0;
           color: var(--cream);
-          font-family: var(--font-display), serif;
-          font-size: clamp(1.8rem, 3vw, 2.4rem);
-          font-weight: 300;
-          line-height: 1;
+          font-family: var(--font-serif), serif;
+          font-size: clamp(1.6rem, 2.5vw, 2rem);
+          font-weight: 700;
+          line-height: 1.1;
         }
 
         .quickLeadCopy,
@@ -1422,9 +1401,10 @@ export default function PropertyLandingClient() {
           border-radius: 999px;
           background: var(--cream);
           color: var(--ink);
-          font-family: var(--font-ui), sans-serif;
-          font-size: 0.72rem;
-          letter-spacing: 0.16em;
+          font-family: var(--font-sans), sans-serif;
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
           cursor: pointer;
         }
@@ -1525,9 +1505,10 @@ export default function PropertyLandingClient() {
         .cellLabel,
         .galleryThumbLabel {
           color: var(--cream);
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.65rem;
-          letter-spacing: 0.18em;
+          font-weight: 600;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
         }
 
@@ -1559,9 +1540,10 @@ export default function PropertyLandingClient() {
           border: 0;
           background: rgba(248, 247, 244, 0.95);
           color: var(--ink);
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.68rem;
-          letter-spacing: 0.16em;
+          font-weight: 600;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
           cursor: pointer;
         }
@@ -1588,9 +1570,9 @@ export default function PropertyLandingClient() {
 
         .statPrimary {
           color: var(--cream);
-          font-family: var(--font-display), serif;
-          font-size: 2.4rem;
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: 2rem;
+          font-weight: 700;
           line-height: 1.05;
         }
 
@@ -1646,10 +1628,10 @@ export default function PropertyLandingClient() {
         .formTitle,
         .agentName {
           margin: 0;
-          font-family: var(--font-display), serif;
-          font-size: clamp(2.5rem, 4vw, 4.1rem);
-          font-weight: 300;
-          line-height: 0.96;
+          font-family: var(--font-serif), serif;
+          font-size: clamp(2rem, 3.5vw, 3.2rem);
+          font-weight: 700;
+          line-height: 1.05;
         }
 
         .sectionTitle span,
@@ -1670,10 +1652,10 @@ export default function PropertyLandingClient() {
         .agentStatement p {
           margin: 1rem 0 0;
           color: rgba(26, 26, 26, 0.65);
-          font-family: var(--font-body), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 1rem;
-          font-weight: 300;
-          line-height: 1.85;
+          font-weight: 400;
+          line-height: 1.75;
         }
 
         .featureList {
@@ -1690,10 +1672,10 @@ export default function PropertyLandingClient() {
           border-top: 1px solid var(--border);
           background: transparent;
           color: var(--warm);
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.72rem;
-          font-weight: 500;
-          letter-spacing: 0.16em;
+          font-weight: 600;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           cursor: pointer;
           text-align: center;
@@ -1745,9 +1727,9 @@ export default function PropertyLandingClient() {
 
         .loftCalloutTitle {
           margin: 0;
-          font-family: var(--font-display), serif;
-          font-size: 2rem;
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: 1.75rem;
+          font-weight: 700;
         }
 
         .gallerySection {
@@ -1853,9 +1835,9 @@ export default function PropertyLandingClient() {
         }
 
         .loftMiniValue {
-          font-family: var(--font-display), serif;
-          font-size: 1.4rem;
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: 1.25rem;
+          font-weight: 700;
         }
 
         .neighborhoodHeader {
@@ -1879,9 +1861,9 @@ export default function PropertyLandingClient() {
         .scoreValue {
           display: block;
           color: var(--warm);
-          font-family: var(--font-display), serif;
-          font-size: 3rem;
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: 2.5rem;
+          font-weight: 700;
           line-height: 1;
         }
 
@@ -1911,9 +1893,9 @@ export default function PropertyLandingClient() {
 
         .cardTitle {
           margin: 0;
-          font-family: var(--font-display), serif;
-          font-size: 1.6rem;
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: 1.35rem;
+          font-weight: 700;
         }
 
         .cardText {
@@ -1978,7 +1960,7 @@ export default function PropertyLandingClient() {
         .agentName {
           margin-top: 0.55rem;
           color: var(--cream);
-          font-size: 2.2rem;
+          font-size: 1.75rem;
         }
 
         .agentFirm {
@@ -2028,7 +2010,7 @@ export default function PropertyLandingClient() {
 
         .formTitle {
           color: var(--cream);
-          font-size: 3.2rem;
+          font-size: 2.5rem;
         }
 
         .inquiryForm {
@@ -2052,9 +2034,10 @@ export default function PropertyLandingClient() {
 
         .field span {
           color: rgba(248, 247, 244, 0.7);
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.68rem;
-          letter-spacing: 0.14em;
+          font-weight: 600;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
         }
 
@@ -2069,6 +2052,18 @@ export default function PropertyLandingClient() {
           outline: none;
         }
 
+        .field select {
+          background: var(--ink);
+          color: var(--cream);
+          -webkit-appearance: auto;
+          appearance: auto;
+        }
+
+        .field select option {
+          background: var(--ink);
+          color: var(--cream);
+        }
+
         .field textarea {
           resize: vertical;
         }
@@ -2078,9 +2073,10 @@ export default function PropertyLandingClient() {
           margin-top: 1rem;
           background: var(--warm);
           color: var(--cream);
-          font-family: var(--font-ui), sans-serif;
-          font-size: 0.74rem;
-          letter-spacing: 0.18em;
+          font-family: var(--font-sans), sans-serif;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
         }
 
@@ -2098,9 +2094,9 @@ export default function PropertyLandingClient() {
         .successTitle {
           margin: 0;
           color: var(--cream);
-          font-family: var(--font-display), serif;
-          font-size: 2rem;
-          font-weight: 300;
+          font-family: var(--font-serif), serif;
+          font-size: 1.75rem;
+          font-weight: 700;
         }
 
         .lightboxOverlay {
@@ -2145,6 +2141,7 @@ export default function PropertyLandingClient() {
           background: rgba(248, 247, 244, 0.08);
           color: var(--cream);
           cursor: pointer;
+          font-family: var(--font-sans), sans-serif;
         }
 
         .lightboxClose {
@@ -2153,9 +2150,9 @@ export default function PropertyLandingClient() {
           min-height: 42px;
           padding: 0 1rem;
           border-radius: 999px;
-          font-family: var(--font-ui), sans-serif;
           font-size: 0.72rem;
-          letter-spacing: 0.16em;
+          font-weight: 600;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
         }
 
@@ -2184,9 +2181,9 @@ export default function PropertyLandingClient() {
           gap: 1rem;
           padding-top: 1rem;
           color: rgba(248, 247, 244, 0.82);
-          font-family: var(--font-ui), sans-serif;
+          font-family: var(--font-sans), sans-serif;
           font-size: 0.7rem;
-          letter-spacing: 0.16em;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
         }
 
