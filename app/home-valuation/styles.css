@@ -95,6 +95,15 @@
   color: rgba(248, 247, 244, 0.4);
 }
 
+.home-valuation-page .hero-section .form-content {
+  max-width: 860px;
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
 .home-valuation-page .form-heading {
   font-family: var(--font-serif), serif;
   font-size: clamp(1.75rem, 3vw, 2.25rem);
@@ -103,6 +112,32 @@
   color: var(--color-near-black);
   text-align: left;
   line-height: 1.2;
+}
+
+.home-valuation-page .hero-section .form-heading,
+.home-valuation-page .hero-section .form-label {
+  color: var(--color-off-white);
+}
+
+.home-valuation-page .hero-section .valuation-form-step1 {
+  max-width: 640px;
+  margin: 0 auto;
+  gap: 1.25rem;
+}
+
+.home-valuation-page .hero-section .valuation-form-step1 .form-heading {
+  margin-bottom: 1.75rem;
+  text-align: center;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.home-valuation-page .hero-section .valuation-form-step1 .form-label {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  color: rgba(248, 247, 244, 0.72);
 }
 
 .valuation-form,
@@ -161,6 +196,25 @@
   }
 }
 
+@media (max-width: 767px) {
+  .home-valuation-page .hero-section .form-content {
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .home-valuation-page .hero-section .valuation-form-step1 .form-heading {
+    margin-bottom: 1.25rem;
+  }
+
+  .home-valuation-page .hero-section .valuation-form-step1 .form-input {
+    padding: 1rem 1.1rem;
+  }
+
+  .home-valuation-page .hero-section .valuation-form-step1 .submit-button {
+    padding: 1rem 1.25rem;
+  }
+}
+
 .home-valuation-page .form-label {
   display: block;
   margin-bottom: var(--spacing-xs);
@@ -202,6 +256,19 @@
   color: rgba(26, 26, 26, 0.4);
 }
 
+.home-valuation-page .hero-section .valuation-form-step1 .form-input {
+  padding: 1.1rem 1.35rem;
+  border-radius: 1.15rem;
+  border-color: #d9d4cb;
+  background: #f5f3ee;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+}
+
+.home-valuation-page .hero-section .valuation-form-step1 .form-input::placeholder {
+  color: rgba(26, 26, 26, 0.38);
+}
+
 .home-valuation-page .submit-button {
   width: 100%;
   padding: 1rem 2rem;
@@ -222,6 +289,22 @@
   background-color: var(--color-accent-bronze);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(139, 115, 85, 0.2);
+}
+
+.home-valuation-page .hero-section .valuation-form-step1 .submit-button {
+  margin-top: 0.75rem;
+  padding: 1.1rem 1.5rem;
+  border-radius: 1.1rem;
+  background: #1f1f1f;
+  color: var(--color-off-white);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  font-weight: 700;
+}
+
+.home-valuation-page .hero-section .valuation-form-step1 .submit-button:hover:not(:disabled) {
+  background: #2a2a2a;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
 
 .home-valuation-page .submit-button:active {
