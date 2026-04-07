@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-.hero-heading {
+.home-valuation-page .hero-heading {
   font-family: var(--font-serif), serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
@@ -22,9 +22,10 @@
   text-align: center;
   display: block;
   width: 100%;
+  text-shadow: none;
 }
 
-.hero-subheadline {
+.home-valuation-page .hero-subheadline {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   margin-bottom: var(--spacing-2xl);
   color: rgba(26, 26, 26, 0.7);
@@ -94,7 +95,7 @@
   color: rgba(248, 247, 244, 0.4);
 }
 
-.form-heading {
+.home-valuation-page .form-heading {
   font-family: var(--font-serif), serif;
   font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: 700;
@@ -143,24 +144,24 @@
   margin-bottom: var(--spacing-lg);
 }
 
-.form-group {
+.home-valuation-page .form-group {
   display: flex;
   flex-direction: column;
 }
 
-.form-row {
+.home-valuation-page .form-row {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-lg);
 }
 
 @media (min-width: 768px) {
-  .form-row {
+  .home-valuation-page .form-row {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-.form-label {
+.home-valuation-page .form-label {
   display: block;
   margin-bottom: var(--spacing-xs);
   font-weight: 500;
@@ -178,7 +179,7 @@
   opacity: 0.7;
 }
 
-.form-input {
+.home-valuation-page .form-input {
   width: 100%;
   padding: 0.875rem 1rem;
   border-radius: var(--radius-md);
@@ -190,18 +191,18 @@
   font-family: var(--font-sans);
 }
 
-.form-input:focus {
+.home-valuation-page .form-input:focus {
   outline: none;
   border-color: var(--color-accent-bronze);
   box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
   background-color: var(--color-off-white);
 }
 
-.form-input::placeholder {
+.home-valuation-page .form-input::placeholder {
   color: rgba(26, 26, 26, 0.4);
 }
 
-.submit-button {
+.home-valuation-page .submit-button {
   width: 100%;
   padding: 1rem 2rem;
   border-radius: var(--radius-lg);
@@ -217,17 +218,17 @@
   font-family: var(--font-sans);
 }
 
-.submit-button:hover:not(:disabled) {
+.home-valuation-page .submit-button:hover:not(:disabled) {
   background-color: var(--color-accent-bronze);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(139, 115, 85, 0.2);
 }
 
-.submit-button:active {
+.home-valuation-page .submit-button:active {
   transform: translateY(0);
 }
 
-.trust-microcopy {
+.home-valuation-page .trust-microcopy {
   text-align: left;
   font-size: var(--font-size-sm);
   color: rgba(26, 26, 26, 0.6);
@@ -258,13 +259,13 @@
   border: 1px solid rgba(255, 107, 107, 0.3);
 }
 
-.submit-button:disabled {
+.home-valuation-page .submit-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
 }
 
-.submit-button:disabled:hover {
+.home-valuation-page .submit-button:disabled:hover {
   transform: none;
   box-shadow: none;
 }
@@ -546,7 +547,7 @@
   padding-bottom: var(--spacing-3xl);
 }
 
-.section-heading {
+.home-valuation-page .section-heading {
   font-family: var(--font-serif), serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;

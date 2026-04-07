@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-.hero-heading {
+.realtor-page .hero-heading {
   font-family: var(--font-serif), serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
@@ -24,7 +24,7 @@
   width: 100%;
 }
 
-.hero-subheadline {
+.realtor-page .hero-subheadline {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   margin-bottom: var(--spacing-xl);
   color: rgba(26, 26, 26, 0.7);
@@ -90,7 +90,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-.form-heading {
+.realtor-page .form-heading {
   font-family: var(--font-serif), serif;
   font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: 700;
@@ -124,24 +124,24 @@
   font-size: var(--font-size-lg);
 }
 
-.form-group {
+.realtor-page .form-group {
   display: flex;
   flex-direction: column;
 }
 
-.form-row {
+.realtor-page .form-row {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-lg);
 }
 
 @media (min-width: 768px) {
-  .form-row {
+  .realtor-page .form-row {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-.form-label {
+.realtor-page .form-label {
   display: block;
   margin-bottom: var(--spacing-xs);
   font-weight: 500;
@@ -152,7 +152,7 @@
   font-family: var(--font-sans);
 }
 
-.form-input {
+.realtor-page .form-input {
   width: 100%;
   padding: 0.875rem 1rem;
   border-radius: var(--radius-md);
@@ -164,18 +164,18 @@
   font-family: var(--font-sans);
 }
 
-.form-input:focus {
+.realtor-page .form-input:focus {
   outline: none;
   border-color: var(--color-accent-bronze);
   box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
   background-color: var(--color-off-white);
 }
 
-.form-input::placeholder {
+.realtor-page .form-input::placeholder {
   color: rgba(26, 26, 26, 0.4);
 }
 
-.submit-button {
+.realtor-page .submit-button {
   width: 100%;
   padding: 1rem 2rem;
   border-radius: var(--radius-lg);
@@ -191,28 +191,28 @@
   font-family: var(--font-sans);
 }
 
-.submit-button:hover:not(:disabled) {
+.realtor-page .submit-button:hover:not(:disabled) {
   background-color: var(--color-accent-bronze);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(139, 115, 85, 0.2);
 }
 
-.submit-button:active:not(:disabled) {
+.realtor-page .submit-button:active:not(:disabled) {
   transform: translateY(0);
 }
 
-.submit-button:disabled {
+.realtor-page .submit-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
 }
 
-.submit-button:disabled:hover {
+.realtor-page .submit-button:disabled:hover {
   transform: none;
   box-shadow: none;
 }
 
-.trust-microcopy {
+.realtor-page .trust-microcopy {
   text-align: left;
   font-size: var(--font-size-sm);
   color: rgba(26, 26, 26, 0.6);
@@ -491,7 +491,7 @@
   padding-bottom: var(--spacing-3xl);
 }
 
-.section-heading {
+.realtor-page .section-heading {
   font-family: var(--font-serif), serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
